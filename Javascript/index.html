@@ -15,19 +15,21 @@
             xy (kėlimas laipsniu)
          
         Vartotojui paspaudus mygtuką „Apskaičiuoti“ programa turi apskaičiuoti vartotojo įvestą matematinį veiksmą bei išvesti rezultatą vartotojui. Jei veiksmas, pirmasis arba antrasis skaičius nėra įvestas – programa turi tai pranešti vartotojui. Taipogi galite atlikti validaciją dėl netinkamų matematinių veiksmų. (dalyba iš 0 ir t.t.)
-        Pro tip: tam, kad nuskaityti select įvesties reikšmę, naudokite element.value;
+        Pro tip: tam, kad nuskaityti select įvesties reikšmę, naudokite <strong>element.value</strong>
         Rekomendacija: Tam, kad prisiminti HTML ir CSS, stilizuokite skaičiuotuvą;
         </div>
+
         <!-- jei skaicius1 arba skaicius2 neivestas conole.log("neivestas skaicius") -->
-        <!-- jei skaiciai ivesti atliekame veiksmus: -->
-        <!-- Jei input yra sudetis, tai skaicius1+skaicius2 -->
-        <!-- Jei input yra atimtis, tai skaicius1-skaicius2 -->
-        <!-- Jei input yra daugyba, tai skaicius1*skaicius2 -->
-        <!-- Jei input yra dalyba, tai skaicius1/skaicius2 -->
-        <!-- paildoma salyga jei skaicius2 lygus nuliuj, console.log("dalyba negalima" -->
-        <!-- Jei input yra kelimas laipsniu, tai skaicius1**skaicius2 -->?
-        <div>
-            <input type="number" placeholder="SKAIČIUS1"/>
+        <!-- jei skaiciai ivesti atliekame veiksmus: 
+        -->
+        <!-- Jei option onclick yra sudetis, tai paspaudus APSKAICIUOTI console.log(skaicius1+skaicius2)-->
+        <!-- Jei option onclick yra atimtis, tai paspaudus APSKAICIUOTI  console.log(skaicius1-skaicius2) -->
+        <!-- Jei option onclick yra daugyba, tai paspaudus APSKAICIUOTI  console.log(skaicius1*skaicius2) -->
+        <!-- Jei option onclick yra dalyba, tai  console.log(skaicius1/skaicius2) -->
+            <!-- papildoma salyga jei skaicius2 lygus nuliuj, paspaudus APSKAICIUOTI console.log("dalyba negalima") kitu atveju paspaudus APSKAICIUOTI skaicius1/skaicius2-->
+            <!-- Jei input yra kelimas laipsniu, tai skaicius2 nereikalignas???? ????-->
+        <div class="skaiciuotuvas">
+            <input id ="skaicius1"type="number" placeholder="SKAIČIUS1"/>
             <select name="veiksmas" id="veiskmas">
                 <option value="SUDĖTIS">SUDĖTIS</option>
                 <option value="ATIMTIS">ATIMTIS</option>
@@ -35,8 +37,9 @@
                 <option value="DAUGYBA">DAUGYBA</option>
                 <option value="DALYBA">DALYBA</option>
               </select>
-            <input type="number" placeholder="SKAIČIUS2"/><br>
+            <input id ="skaicius2" type="number" placeholder="SKAIČIUS2"/><br>
             <button onclick="">APSKAIČIUOTI</button>
         </div>
+        <script src="Calculator.js"></script>
 </body>
 </html>
