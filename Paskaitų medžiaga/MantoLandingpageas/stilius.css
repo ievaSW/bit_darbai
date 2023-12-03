@@ -5,3 +5,40 @@
    .logos-at-the-end{
     margin-top: 100px;
    }
+   .info{
+    background-color: rgba(208, 200, 200, 0.61);
+    padding: .5rem 1rem;
+    margin: 1rem;
+   }
+   .green {
+    background-color: #56E6A5;
+    
+   }
+.yellow{
+    background-color: #FFE87A;
+    font-weight: bold;
+}
+.strong{
+    font-weight: bold;
+    font-size: 1rem;
+    padding-top: 12px;
+    
+}
+.grey{
+    color:  #A79D9D;
+    padding-top: 12px;
+}
+.section3{
+    background-color: #e2bdf237
+}
+ul.no-bullets {
+    list-style-type:none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+  }
+.violet {
+    background-color: #9A54BC;
+    color: white;
+    
+}
+
