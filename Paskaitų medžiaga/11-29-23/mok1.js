@@ -7,7 +7,12 @@ console.log(imone1)
 // \t\ tabuliacinis simbolis TAB
 // \n - new line symbol
 let imoniuSarasas = imone + '\n' + imone1;
-imoniuSarasas = ``
+console.log(imoniuSarasas);
+
+imoniuSarasas = `${imone1}\n${imone2}`;
+
+//--------------------------------
+
 
 // duomenu tipo keitimas
 
@@ -27,6 +32,7 @@ console.log(skaiciusTekstas);
 // Math
 skaicius = 12.8;
 // apvalinimas
+
 let roundedSkaicius = Math.round(skaicius);
 
 console.log('suapvalinta reiksme: ' + roundedSkaicius);
@@ -38,7 +44,10 @@ console.log('suapvalinta reiksme i didziaja puse:' + roundedSkaicius);
 
 // skaiciaus konvertavimas i string duomenu tipa:
 
-let valiuta = skaicius.toFixed(2);
+
+
+let valiuta = skaicius.toFixed(2); 
+// skliausteliuose nurodoma kiek skaiciu po kablelio reikia palikti skaicius.toFixed(...)
 console.log(valiuta);
 
 let tekstasSkaicius = skaicius + '';

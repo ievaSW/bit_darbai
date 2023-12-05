@@ -2,15 +2,15 @@
     position: absolute;
     top:350px;
    }
-   .logos-at-the-end{
+.logos-at-the-end{
     margin-top: 100px;
    }
-   .info{
+.info{
     background-color: rgba(208, 200, 200, 0.61);
     padding: .5rem 1rem;
     margin: 1rem;
    }
-   .green {
+.green {
     background-color: #56E6A5;
     
    }
@@ -40,5 +40,9 @@ ul.no-bullets {
     background-color: #9A54BC;
     color: white;
     
+}
+.img-phone{
+   width:600px;
+   height: 600px;
 }
 

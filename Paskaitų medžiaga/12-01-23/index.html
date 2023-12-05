@@ -6,18 +6,27 @@
     <title>Skaičiaus atspėjimo žaidimas</title>
 </head>
 <body>
-    <h1>Skaiciaus atspejimo zaidimas</h1>
-    <p>Taisykles:</p>
-    <input id="Guess-input" type="text" placeholder="Įveskite savo spėjimą">
-    <button oneclick="guessElement">Bandyti</button>
-    <p>Spėjimas buvo neteisingas.Skaicius yra mazesnis arba didesnis</p>
+    <body>
+		<h2>Skaičiaus atspėjimo žaidimas</h2>
+		<p>
+			<b>Taisyklės:</b> Buvo sugeneruotas skaičius nuo 1 iki 20. Įveskite savo
+			spėjimą. Jei spėjimas buvo mažesnis arba didesnis nei sugeneruotas
+			skaičius, programa jums apie tai praneš. Iš viso turite
+			<b id="spejimu-skaicius">6</b> spėjimus
+		</p>
+		<input
+			id="guess"
+			type="number"
+			placeholder="Įveskite savo spėjimą"
+		/>
+		<button onclick="guessNumber()">Bandyti</button>
+		<p id="rez">
+			Spėjimas buvo neteisingas. Skaičius yra mažesnis arba didesnis
+		</p>
 
-
-
-
-
-
-    <script src="Atspejimozaidimas.js"></script>
+		<!-- <script src="js/mok1.js"></script> -->
+		<script src="Atspejimozaidimas.js"></script>
+	</body>
 </body>
 </html>
 <!-- ar visi skaiciai kurie baigiasi 6 ir 7 dalijasi be liekanos is 6 ar 7 -->

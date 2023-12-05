@@ -29,17 +29,23 @@
             <!-- papildoma salyga jei skaicius2 lygus nuliuj, paspaudus APSKAICIUOTI console.log("dalyba negalima") kitu atveju paspaudus APSKAICIUOTI skaicius1/skaicius2-->
             <!-- Jei input yra kelimas laipsniu, tai skaicius2 nereikalignas???? ????-->
         <div class="skaiciuotuvas">
-            <input id ="skaicius1"type="number" placeholder="SKAIČIUS1"/>
-            <select name="veiksmas" id="veiskmas">
+            <input id="skaicius1" type="number" placeholder="SKAIČIUS1">
+            <select id="veiskmas">
                 <option value="SUDĖTIS">SUDĖTIS</option>
                 <option value="ATIMTIS">ATIMTIS</option>
                 <option value="KĖLIMAS LAIPSNIU">KĖLIMAS LAIPSNIU</option>
                 <option value="DAUGYBA">DAUGYBA</option>
                 <option value="DALYBA">DALYBA</option>
               </select>
-            <input id ="skaicius2" type="number" placeholder="SKAIČIUS2"/><br>
-            <button onclick="">APSKAIČIUOTI</button>
+            <input id="skaicius2" type="number" placeholder="SKAIČIUS2"><br>
+            <button onclick="calculationrezult()">APSKAIČIUOTI</button>
+            <p id="Atsakymas">Ats:</p>
         </div>
         <script src="Calculator.js"></script>
+        <!-- name kreipimasis i serveri -->
+        <!-- float palieka skaiciu po kablelio -->
+        <!-- alt + 253 kelia laipsniu -->
+        <!-- UI user interface viskas ka vartotojas mato -->
 </body>
 </html>
+ 
