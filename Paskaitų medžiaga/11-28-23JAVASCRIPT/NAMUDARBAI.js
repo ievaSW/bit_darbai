@@ -153,7 +153,7 @@ if (SK1 > SK2)
 else if (SK2 > SK1);
 {console.log(SK2/SK1);} 
 // skaicius.toFixed(2);
-let atsakymas = Math.abs((SK1/SK2));
+let atsakymas = ((SK1/SK2).toFixed(2));
 console.log(atsakymas);
 
 // UZUOTIS SU KATEGORIJOMIS (INTERVALAIS)
@@ -250,10 +250,37 @@ console.log(NaujasTekstas4);
 
 // 13. Sukurti du kintamuosius a = 5 bei b = 20; Nepasinaudojant trečiu kintamuoju, apkeisti šių dviejų kintamųjų reikšmes vietomis;
 
-let A = 5,
-    B = 20;
+let A = 20,
+    B = 30;
 console.log(A, B)
-console.log(A*4, B/4)
+
+if (A=10){
+console.log(A+15,A);
+}
+
+// ne iki galo//
+
+// 12.  Pasinaudodami jau pateikta rand funkcija, sukurkite kitą funkciją, kuri sugeneruoja atsitiktinį skaičių nuo minimalios iki maksimalios reikšmės su dviem skaitmenimis po kablelio.
+function rand(min, max) {
+    return (Math.floor(Math.random() * (max - min + 1)) + min);
+}
+
+function RandomToFix(){
+    rand(min, max).toFixed(2);
+    let X = rand(0,5);
+    console.log(X);
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 

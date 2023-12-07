@@ -106,3 +106,4 @@ console.log(y);
 //Stringo ilgis gaunamas pasinaudojant savybe kintamasis.length
 kintamasis = "CHICKEN"
 console.log(kintamasis.length);
+
