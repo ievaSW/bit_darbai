@@ -49,16 +49,23 @@ for (i=0; i < String.length; i++){
 }
 // Sugeneruokite 300 atsitiktinių skaičių nuo 0 iki 300, atspausdinkite juos atskirtus tarpais ir suskaičiuokite kiek tarp jų yra didesnių už 150.  Skaičiai didesni nei 275 turi būti raudonos spalvos.
 
-let Numbers = rand(0,300);
-for (i=0; i > 300; i++){
-    
-}
+let NumDaugiau150 = 0;
 
+for (i=0; i < 5; i++){
+    let Number = rand(0,300);
+    console.log(`    ${Number}  `);
+    // kodel jungia prie pries tai buvusios eilutes su su Wonderful life, kai naudoju document.write?
+    if (Number > 150) NumDaugiau150++
+    else if (Number > 275){
+        // console.log("Raudoni skaičiai:"+ )
+    }
+}
+console.log("Skaičių daugiau už 150 yra:" + NumDaugiau150);
 
 
 // string.lenght = eilutes ilgi nurodo
 
-
+// for (let indeksas = "*"; indeksas<400; indeksas+=4 )
 // let randomNum1 = rand(-10,10);
 // let randomNum2 = rand(-10,10);
 // let randomNum3 = rand(-10,10);
@@ -92,7 +99,7 @@ function rand(min, max) {
 
  
 // linija iš 400 “*” 
-let n = 400;
+// let n = 400;
 
 // for( let i = 0; i < n; i++) {
 //     let eilute = "*";
