@@ -10,6 +10,21 @@
 // Skaičiai t1, t2, t3 reiškia vidutinę trijų iš eilės einančių dienų temperatūrą. Kelias dienas temperatūra buvo neigiama, o kelias - teigiama? Rezultatą išspausdinkite žodžiais. Šiuo atveju 0 skaitome, kaip teigiamą temperatūrą.
 // Pvz.: t1 = 2, t2 = -5, t3 = 8, Rezultatas: Dvi dienas teigiama, vieną - neigiama.
 
+// const temperatura = document.querySelector(".temperatura");
+
+// temperatura.addEventListener("click", temperatura1)
+
+// function temperatura1() {
+//     const TemperaturuVidurkiai = [rand(-30, 25), rand(-30, 25), rand(-30, 25)];
+//     let countNeigiamaTemperatura = 0;
+//     countTeigiamaTemperatura = 0;
+//     for (let index = 0; index < TemperaturuVidurkiai.length; index++) {
+//         if (TemperaturuVidurkiai[index] < 0)  countNeigiamaTemperatura++;
+//         else if (TemperaturuVidurkiai[index] >=0) countTeigiamaTemperatura++;
+//     }
+// temperatura1.innerHTML = `${countNeigiamaTemperatura++}`
+// }
+
 function rand(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
