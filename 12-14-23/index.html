@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>CRUD</h1>
+
+<div class="container">
+    <!-- containeris neleidzia daugiau plesti nei numatyta -->
+<form action="">
+    <!-- pasidarom grida  -->
+    <div class="row">
+        <div class="col-4">
+            <label for="title">Pavadinimas:</label>
+            <input 
+            class="form-control" 
+            type="text"
+            id="title"
+            name="title" />
+        </div>
+        <div class="col-4">
+            <label for="title">Kaina:</label>
+            <input 
+            class="form-control" 
+            type="text"
+            id="price"
+            name="price" />
+        </div>
+        <div class="col-4">
+            <label for="title">Kiekis</label>
+            <input 
+            class="form-control" 
+            type="text"
+            id="stock"
+            name="stock" />
+        </div>
+        <div class="col-4">
+            <label for="title">Prekinis ženklas</label>
+            <input 
+            class="form-control" 
+            type="text"
+            id="brand"
+            name="brand" />
+        </div>
+        <div class="col-4">
+            <label for="title">Kategorija</label>
+            <select
+            class="form-select" 
+            id="category"
+            name="category">
+        <option>laptops</option>
+        <option>fragrances</option>
+        <option>smartphones</option>
+        <option>skincare</option>
+    </select>
+    <div>
+        <button class="btn btn-primary">submit</button>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Prekinis =enklas</th>
+                <th>kaina</th>
+                <th>Kiekis</th>
+                <th>prekines pavadiniams</th>
+                <th>Kategorija</th>
+                <th>Veiksmai</th>
+            </tr>
+        </thead>
+        <tbody class="data">
+           
+        </tbody>
+    </table>
+        
+</form>
+</div>
+
+
+
+
+    <script src="js.js"></script>
+    <script>
+        // CRUD:
+        // CREATE - SUKURTI IRASA
+        // READE - PERZIURETI
+        // UPDATE - ATNAUJINTI
+        // DELETE - ISTRINTI
+
+const data = document.getElementById(".data");
+
+const getTableContent(){
+    let dynamicHTML = ``;
+for(const product of products){
+    dynamicHTML += `
+            <tr>
+                <td>${product.id}</td>
+                <td>${product.title}</td>
+                <td>${product.price}</td>
+                <td>${product.stock}</td>
+                <td>${product.brand}</td>
+                <td>${product.category}</td>
+                <td><button class="btn btn-danger">Istrinti</button></td>
+            </tr>`
+}
+// console.log()
+}
+
+dynamicDataElement.innerHTML = dynamicHTML;
+
+const createnewrecord = ()=>{
+// pushas
+}
+
+    </script>
+</body>
+</html>

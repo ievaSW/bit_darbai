@@ -1,0 +1,21 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    /* width: 200px; */
+}
+.container{
+    background-color: rgb(136, 229, 121);
+    width: 22rem;
+    color: white;
+    text-align: center;
+}
+div{
+margin-top: 20px;
+}
+
+button{
+    margin-top: 20px;
+}
+
