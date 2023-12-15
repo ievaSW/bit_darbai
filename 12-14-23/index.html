@@ -16,7 +16,7 @@
     <!-- pasidarom grida  -->
     <div class="row">
         <div class="col-4">
-            <label for="title">Pavadinimas:</label>
+            <label for="title">Pavadinimas</label>
             <input 
             class="form-control" 
             type="text"
@@ -24,7 +24,7 @@
             name="title" />
         </div>
         <div class="col-4">
-            <label for="title">Kaina:</label>
+            <label for="title">Kaina</label>
             <input 
             class="form-control" 
             type="text"
@@ -58,45 +58,65 @@
         <option>smartphones</option>
         <option>skincare</option>
     </select>
+<!-- Kai submit mygtukas yra formoje, ji interpretuoja  kaip mygtuka kuris skirtas isssiusti formos duomenis i serveri-->
     <div>
-        <button class="btn btn-primary">submit</button>
+        <button id =  "submit"  class="btn btn-primary">submit</button>
     </div>
+</form>
+</div>
+
     <table class="table table-striped">
         <thead>
             <tr>
                 <th>#</th>
-                <th>Prekinis =enklas</th>
-                <th>kaina</th>
+                <th>Prekinis ženklas</th>
+                <th>Kaina</th>
                 <th>Kiekis</th>
-                <th>prekines pavadiniams</th>
+                <th>Prekės pavadiniams</th>
                 <th>Kategorija</th>
-                <th>Veiksmai</th>
+                <th>Ištrynimas</th>
+                <th>Atnaujinimas</th>
+                <th></th>
             </tr>
         </thead>
-        <tbody class="data">
+        <tbody id="data">
            
         </tbody>
     </table>
         
-</form>
-</div>
+    
 
 
 
+<!-- products.json ilgalaike saugykla -->
 
-    <script src="js.js"></script>
+    <script src="./js/products.js"></script>
     <script>
         // CRUD:
-        // CREATE - SUKURTI IRASA
-        // READE - PERZIURETI
-        // UPDATE - ATNAUJINTI
-        // DELETE - ISTRINTI
+        // CREATE - SUKURTI IRAŠĄ
+        // READE - PERZIURETI IRAŠĄ
+        // UPDATE - ATNAUJINTI IRAŠĄ
+        // DELETE - ISTRINTI IRAŠĄ
 
-const data = document.getElementById(".data");
+let editMode = false;
 
-const getTableContent(){
+// DUOMENŲ ATVAIZDAVIMAS LENTELĖJE
+
+const dataElement = document.getElementById("data"),
+        titleElement = document.getElementById("title"),
+        priceElement = document.getElementById("price"),
+        stockElement = document.getElementById("stock"),
+        brandElement = document.getElementById("brand"),
+        categoryElement = document.getElementById("category"),
+        submitButtonElement = document.getElementById("submit");
+
+
+// PRODUKTŲ (LENTELĖS ĮRAŠŲ ATVAIZDAVIMAS) ATVAIZDAVIMAS LENTELĖJE
+
+const getTableContents= ()=> {
     let dynamicHTML = ``;
-for(const product of products){
+    for(const product of products){
+// PRODUCT YRA MASYVAS, Į JO OBJEKTŲ PROPERCIUS KREIPIAMĖS.
     dynamicHTML += `
             <tr>
                 <td>${product.id}</td>
@@ -105,17 +125,103 @@ for(const product of products){
                 <td>${product.stock}</td>
                 <td>${product.brand}</td>
                 <td>${product.category}</td>
-                <td><button class="btn btn-danger">Istrinti</button></td>
+                <td>
+                    <button 
+                    onclick="deleteProduct(${product.id})" 
+                    class="btn btn-danger">
+                    Ištrinti
+                    </button>
+                </td>
+                <td>
+                    <button 
+                    onclick="setEdit(${product.id})" 
+                    class="btn btn-success">
+                    Atnaujinti
+                    </button>
+                </td>
+                <td>
+                    <button 
+                    onclick="(${product.id})" 
+                    class="btn btn-warning">
+                    Ištrinti
+                    </button>
+                </td>
+                
             </tr>`
 }
-// console.log()
+
+dataElement.innerHTML = dynamicHTML;
+// Galimas ir automatinis funkcijos iskvietimas apskliaudus funcija skliasusteliais nuo lygybes zenklo ir uz jos padejus skaliaustelius
+
+};
+
+// FUNKCIJOS IŠKVIETIMAS
+getTableContents();
+
+
+// naujo elemento pridejimas
+const createNewRecord = (event)=>{
+// prevencija nuo yprastinio elgesio, naudojama tik formomis
+    event.preventDefault();
+    const newProduct = {
+        // kompozicinis budas
+        id: products[products.length- 1].id + 1,
+        title: titleElement.value,
+        price: priceElement.value,
+        stock: stockElement.value,
+        brand: brandElement.value,
+        category: categoryElement.value
+    };
+    products.push(newProduct)
+// išsikviečiam funkcija
+getTableContents();
+
+// console.log(newProduct);
+};
+
+
+submitButtonElement.onclick = createNewRecord;
+
+// ELEMENTO IŠTRYNIMAS PAGAL ID
+const deleteProduct = (id)=>{
+    let elementIndex = products.findIndex((value)=>value.id === id);
+    // tirkinam
+    // console.log(elementIndex);
+    // ištrinam pagal indeksą, nurodom kiek istrinam
+    products.splice(elementIndex, 1);
+    getTableContents();
+}
+const updateProduct = ()=>{
+
+}
+// ELEMENTO ATNAUJINIMAS PAGAL ID
+const setEdit = (id)=>{
+   
+    let elementIndex = products.findIndex((value)=>value.id === id);
+    const product = products[elementIndex];
+    // console.log(product);
+    titleElement.value = product.title;
+    priceElement.value = product.price;
+    stockElement.value = product.stock;
+    brandElement.value = product.brand;
+    categoryElement.value = product.title;
+    editMode = true;
+    submitButtonElement.innerText = "Update";
+    submitButtonElement.classList.add("btn-secondary");
+    submitButtonElement.classList.remove("btn-primary");
 }
 
-dynamicDataElement.innerHTML = dynamicHTML;
 
-const createnewrecord = ()=>{
-// pushas
-}
+// const dataElement = document.getElementById("data"),
+//         titleElement = document.getElementById("title"),
+//         priceElement = document.getElementById("price"),
+//         stockElement = document.getElementById("stock"),
+//         brandElement = document.getElementById("brand"),
+//         categoryElement = document.getElementById("category"),
+//         submitButtonElement = document.getElementById("submit");
+
+
+
 
     </script>
 </body>
