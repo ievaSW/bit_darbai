@@ -361,10 +361,105 @@
         thumbnail: "https://i.dummyjson.com/data/products/30/thumbnail.jpg"
       }
     ]
+
+// const text = `<div>
+// <div style="display: flex; justify-content: space-between;
+// align-items: center; padding-top: 10px; padding-bottom:30px; border-bottom: 2px solid rgb(215, 215, 215); color: black;">
+// <div>
+// <img src="${products[0].thumbnail}" style="position: relative; width: 150px; height: 150px;"></img>`
+// document.getElementById("container").innerHTML = text;
+
+
+// for (let index = 0; index < products.length; index++) 
+// { 
+//   // let allproducts = products[index]
+//   // console.log(allproducts);
+// }
+
+// const product = `
+// <div class="d-flex justify-content-between gap-3">
+//     <div id="product_info">
+//         <img id = "Product_photo"  src="${products[0].thumbnail}" alt="">
+//     </div>
+//     <div>
+//         <h5 id="product_title">${products[0].title}</h5>
+//         <img id="product_rating"/>${products[0].rating}
+//         <!-- zvaigzdutes arba cikla arba imgus desiu -->
+//         <p id="product_description">${products[0].description}</p>
+//     </div>
+//     <div>
+//         <p id="product_price">${"$" + products[0].price}</p>
+//         <button class = "btn btn-warning" id="add_to_cart">Add to cart</button>
+//     </div>
+// </div>`
+const product = document.getElementById("product_info");
+
+const Allproducts = ()=>{
+  let AllproductsHTML = ``;
+  for (const product of products){
+    AllproductsHTML += `
+    <div class="container mb-4 d-flex justify-content-between">
+      <div class = photo  id="product_info">
+        <img id = "Product_photo"  src="${product.thumbnail}" alt="">
+      </div>
+      <div class = "container">
+          <h5 id="product_title">${product.title}</h5>
+          <p id="product_rating">${product.rating}</p>
+          <!-- zvaigzdutes arba cikla arba imgus desiu -->
+          <p id="product_description">${product.description}</p>
+      </div>
+      <div>
+          <p id="product_price" class="price">${"$" + product.price}</p>
+          <button class = "" id="add_to_cart">Add to cart</button>
+      </div>
+  </div>`
+ 
   
-const text = `<div>
-<div style="display: flex; justify-content: space-between;
-align-items: center; padding-top: 10px; padding-bottom:30px; border-bottom: 2px solid rgb(215, 215, 215); color: black;">
-<div>
-<img src="${products[0].thumbnail}" style="position: relative; width: 150px; height: 150px;"></img>`
-document.getElementById("container").innerHTML = text;
+ }
+ product.innerHTML = AllproductsHTML;
+};
+
+Allproducts();
+
+
+
+
+
+// const getTableContents= ()=> {
+//   let dynamicHTML = ``;
+//   for(const product of products){
+// // PRODUCT YRA MASYVAS, Į JO OBJEKTŲ PROPERCIUS KREIPIAMĖS.
+//   dynamicHTML += `
+//           <tr>
+//               <td>${product.id}</td>
+//               <td>${product.title}</td>
+//               <td>${product.price}</td>
+//               <td>${product.stock}</td>
+//               <td>${product.brand}</td>
+//               <td>${product.category}</td>
+//               <td>
+//                   <button 
+//                   onclick="deleteProduct(${product.id})" 
+//                   class="btn btn-danger">
+//                   Ištrinti
+//                   </button>
+//               </td>
+//               <td>
+//                   <button 
+//                   onclick="setEdit(${product.id})" 
+//                   class="btn btn-success">
+//                   Atnaujinti
+//                   </button>
+//               </td>
+              
+              
+//           </tr>`
+// }
+
+// dataElement.innerHTML = dynamicHTML;
+// // Galimas ir automatinis funkcijos iskvietimas apskliaudus funcija skliasusteliais nuo lygybes zenklo ir uz jos padejus skaliaustelius
+
+// };
+
+// // FUNKCIJOS IŠKVIETIMAS
+// getTableContents()

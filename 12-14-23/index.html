@@ -99,7 +99,7 @@
         // DELETE - ISTRINTI IRAŠĄ
 
 let editMode = false;
-
+let currentProduct;
 // DUOMENŲ ATVAIZDAVIMAS LENTELĖJE
 
 const dataElement = document.getElementById("data"),
@@ -111,7 +111,7 @@ const dataElement = document.getElementById("data"),
         submitButtonElement = document.getElementById("submit");
 
 
-// PRODUKTŲ (LENTELĖS ĮRAŠŲ ATVAIZDAVIMAS) ATVAIZDAVIMAS LENTELĖJE
+// PRODUKTŲ (LENTELĖS ĮRAŠŲ) ATVAIZDAVIMAS LENTELĖJE
 
 const getTableContents= ()=> {
     let dynamicHTML = ``;
@@ -139,13 +139,7 @@ const getTableContents= ()=> {
                     Atnaujinti
                     </button>
                 </td>
-                <td>
-                    <button 
-                    onclick="(${product.id})" 
-                    class="btn btn-warning">
-                    Ištrinti
-                    </button>
-                </td>
+                
                 
             </tr>`
 }
@@ -191,8 +185,27 @@ const deleteProduct = (id)=>{
     products.splice(elementIndex, 1);
     getTableContents();
 }
-const updateProduct = ()=>{
+const updateProduct = (event)=>{
+    event.preventDefault();
+    console.log("veikiu!");
+    products[currentProduct].title = titleElement.value;
+    products[currentProduct].price = priceElement.value;
+    products[currentProduct].stock = stockElement.value;
+    products[currentProduct].brand = brandElement.value;
+    products[currentProduct].category = categoryElement.value
 
+    getTableContents();
+    currentProduct = undifiend;
+    editMode = false;
+    submitButtonElement.onclick = createNewRecord;
+    submitButtonElement.innerText = "Submit";
+    submitButtonElement.classList.add("btn-primary");
+    submitButtonElement.classList.remove("btn-secondary");
+    titleElement.value = "";
+    priceElement.value = "";
+    stockElement.value = "";
+    brandElement.value = "";
+    categoryElement.value = "";
 }
 // ELEMENTO ATNAUJINIMAS PAGAL ID
 const setEdit = (id)=>{
@@ -205,10 +218,12 @@ const setEdit = (id)=>{
     stockElement.value = product.stock;
     brandElement.value = product.brand;
     categoryElement.value = product.title;
-    editMode = true;
     submitButtonElement.innerText = "Update";
     submitButtonElement.classList.add("btn-secondary");
     submitButtonElement.classList.remove("btn-primary");
+    submitButtonElement.onclick = updateProduct;
+    currentProduct = elementIndex;
+    editMode = true;
 }
 
 
