@@ -398,7 +398,7 @@ const Allproducts = ()=>{
   let AllproductsHTML = ``;
   for (const product of products){
     AllproductsHTML += `
-    <div class="container mb-4 d-flex justify-content-between">
+    <div class="mb-4 col-11 d-flex justify-content-arround">
       <div class = photo  id="product_info">
         <img id = "Product_photo"  src="${product.thumbnail}" alt="">
       </div>
