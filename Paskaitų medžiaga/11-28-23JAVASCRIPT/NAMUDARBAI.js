@@ -262,14 +262,12 @@ console.log(A+15,A);
 
 // 12.  Pasinaudodami jau pateikta rand funkcija, sukurkite kitą funkciją, kuri sugeneruoja atsitiktinį skaičių nuo minimalios iki maksimalios reikšmės su dviem skaitmenimis po kablelio.
 function rand(min, max) {
-    return (Math.floor(Math.random() * (max - min + 1)) + min);
+    return ((Math.floor(Math.random() * (max - min + 1)) + min));
 }
 
-function RandomToFix(){
-    rand(min, max).toFixed(2);
-    let X = rand(0,5);
-    console.log(X);
-}
+ console.log(rand(0,15));
+
+
 
 
 

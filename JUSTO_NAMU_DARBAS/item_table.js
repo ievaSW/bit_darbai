@@ -404,8 +404,14 @@ const Allproducts = ()=>{
       </div>
       <div class = "container">
           <h5 id="product_title">${product.title}</h5>
-          <p id="product_rating">${product.rating}</p>
-          <!-- zvaigzdutes arba cikla arba imgus desiu -->
+          <span class="stars" id="product_rating">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+            </span>
+         
           <p id="product_description">${product.description}</p>
       </div>
       <div>
@@ -413,53 +419,13 @@ const Allproducts = ()=>{
           <button class = "" id="add_to_cart">Add to cart</button>
       </div>
   </div>`
- 
-  
+// product price yra kaina su nuolaida
  }
  product.innerHTML = AllproductsHTML;
 };
-
 Allproducts();
 
 
 
 
 
-// const getTableContents= ()=> {
-//   let dynamicHTML = ``;
-//   for(const product of products){
-// // PRODUCT YRA MASYVAS, Į JO OBJEKTŲ PROPERCIUS KREIPIAMĖS.
-//   dynamicHTML += `
-//           <tr>
-//               <td>${product.id}</td>
-//               <td>${product.title}</td>
-//               <td>${product.price}</td>
-//               <td>${product.stock}</td>
-//               <td>${product.brand}</td>
-//               <td>${product.category}</td>
-//               <td>
-//                   <button 
-//                   onclick="deleteProduct(${product.id})" 
-//                   class="btn btn-danger">
-//                   Ištrinti
-//                   </button>
-//               </td>
-//               <td>
-//                   <button 
-//                   onclick="setEdit(${product.id})" 
-//                   class="btn btn-success">
-//                   Atnaujinti
-//                   </button>
-//               </td>
-              
-              
-//           </tr>`
-// }
-
-// dataElement.innerHTML = dynamicHTML;
-// // Galimas ir automatinis funkcijos iskvietimas apskliaudus funcija skliasusteliais nuo lygybes zenklo ir uz jos padejus skaliaustelius
-
-// };
-
-// // FUNKCIJOS IŠKVIETIMAS
-// getTableContents()

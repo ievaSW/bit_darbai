@@ -11,28 +11,52 @@
 </head>
 <body>
     
-<section>
+<div class="container">
+    <hr>
     <div class="d-flex justify-content">
         <div id="product_info">
             <img id = "Product_photo"  src="" alt="product photo">
         </div>
         <div>
             <h5 id="product_title"></h5>
-            <p id="product_rating"></p>
+            <span class="star" id="product_rating">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+            </span>
             <!-- <img id="product_rating"/> -->
             <!-- zvaigzdutes arba cikla arba imgus desiu -->
             <p id="product_description"></p>
         </div>
         <div>
-            <p id="product_price" class="price"></p>
+            <div id="product_price"><span class="price">300.00</span>500.00</div>
             <!-- <button id="add_to_cart btn btn-warning"></button> -->
         </div>
     </div>
+</div>
     
-</section>
+
 
 <!-- <div id="container"></div> -->
 <script src="item_table.js"></script>
+
+<!--  function generateStars(rating) {
+    const fullStar = `<i class="bi bi-star-fill"></i>`
+    const halfStar = `<i class="bi bi-star-fill"></i>`
+    const emptyStar = `<i class="bi bi-star-fill"></i>`
+
+    let dynamicHTML = "";
+    const countOfFullStars = Math.floor(rating),
+        halfStarShouldExist = rating - countOfFullStars > 0.5,
+        emptyStarCount = halfStarShouldExist
+        ? 4 - countOfFullStars
+        : 5 - countOfFullStars; 
+
+        for( let i=0; i < countOfFullStars; i++) dynamicHTML+= fullStar;
+        if (halfStarShouldExist) dynamicHTML+= fullStar++
+} -->
 
 </div>
 </body>

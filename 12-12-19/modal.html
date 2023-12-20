@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modalinis Langas</title>
+    
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    .modal-background{
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.596);
+        position: fixed;
+        visibility: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+    }
+    .modal {
+    background-color: white;
+    width: 50%;
+    height: 50%;
+    /* nauji matavimo vienetai ch= vienas nulio charecteris */
+
+
+    }
+    .half-width{
+        width: 50%;
+        margin: 0 auto;
+    }
+    .half-width::backdrop{
+        /* gradienta fonui uzdeti */
+        background: linear-gradient();
+        /* permatomumas */
+        opacity: 0.5;
+    }
+</style>
+</head>
+<body>
+
+    
+    <div class="modal-background">
+        <div class="modal">
+            <div class="buttons">
+                <h3>Very interesting text</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing e inventore laboriosam ad tenetur? Et veritatis sint ad! Nesciunt magnam, autem quam nostrum doloremque dolor illum optio odio ipsa tempore explicabo iste minima necessitatibus porro placeat voluptatibus assumenda cumque corporis ipsam numquam voluptas cum quaerat! Pariatur, quas aperiam. Dignissimos minus vero perferendis, fugiat enim velit recusandae consequuntur?</p>
+                <hr/>
+                <button onclick = "closeModal()">Close</button>
+            </div>
+        </div>
+        
+    </div>
+    <div class="container"></div>
+    <h3>Title</h3>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam natus itaque neque sed earum magnam harum exercitationem provident architecto, veritatis aspernatur culpa porro ea, eaque, rem commodi ad quod? Ipsam dolores fugit error adipisci odit, expedita tempore ratione optio. Vel officia fuga voluptates, est tempora totam exercitationem quo nesciunt, autem veniam debitis beatae asperiores commodi id harum cum voluptatem quia dolor incidunt amet! Dignissimos, obcaecati. Dignissimos, libero rerum, vitae tempore debitis velit quisquam facere accusantium laborum possimus cum id? Ullam laborum consequuntur quis. Saepe voluptatem, corrupti ullam minus libero necessitatibus hic sint impedit quas, quis obcaecati eaque odio tenetur molestias.</p>
+    <hr>
+    <h3>Title</h3>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam natus itaque neque sed earum magnam harum exercitationem provident architecto, veritatis aspernaturibus hic sint impedit quas, quis obcaecati eaque odio tenetur molestias.</p>
+    <hr>
+    <button onclick="modalDialog.show()">Open Modal</button>
+<!-- Naujas HTML tagas modaliniam langui kurti -->
+    <dialog class="half-width">
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam natus itaque neque sed earum magnam harum exercitationem provident architecto, veritatis aspernatur culpa porro ea, eaque, rem commodi ad quod? Ipsam dolores fugit error adipisci odit, expedita tempore ratione optio. Vel officia fuga voluptates, est tempora totam exercitationem quo nesciunt, autem veniam debitis beatae asperiores commodi id harum cum voluptatem quia dolor incidunt amet! Dignissimos, obcaecati. Dignissimos, libero rerum, vitae tempore debitis velit quisquam facere accusantium laborum possimus cum id? Ullam laborum consequuntur quis. Saepe voluptatem, corrupti ullam minus libero necess</p>
+        <button onclick = "modalDialog.close()">Close</button>
+    </dialog>
+
+    <script>
+        // MODALINIO LANGO VALDYMO VARIANTAI
+        // 1.
+// elemento pasiemimas is HTML per document.queryselector
+        const modal = document.querySelector(".modal-background");
+        function openModal(){
+            modal.style.visibility = "visible";
+        }
+       
+        function closeModal(){
+            modal.style.visibility = "hidden";
+        }
+// 2. <dialog>
+    const modalDialog = document.querySelector("dialog");
+    // automatiškai pasinaudojan metodu (integruotas jau funkcionalumas)
+    // modalDialog.show(); parodo modalinį langą
+    // modalDialog.close(); uždaro modalinį langą
+    </script>
+</body>
+</html>

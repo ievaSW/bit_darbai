@@ -134,7 +134,7 @@ const getTableContents= ()=> {
                 </td>
                 <td>
                     <button 
-                    onclick="setEdit(${product.id})" 
+                    onclick="setEdit(event,${product.id})" 
                     class="btn btn-success">
                     Atnaujinti
                     </button>
@@ -208,16 +208,20 @@ const updateProduct = (event)=>{
     categoryElement.value = "";
 }
 // ELEMENTO ATNAUJINIMAS PAGAL ID
-const setEdit = (id)=>{
+const setEdit = (event, id)=>{
    
+
+    event.preventDefault();
     let elementIndex = products.findIndex((value)=>value.id === id);
     const product = products[elementIndex];
     // console.log(product);
+// inputu uzpildome duomenimis
     titleElement.value = product.title;
     priceElement.value = product.price;
     stockElement.value = product.stock;
     brandElement.value = product.brand;
     categoryElement.value = product.title;
+
     submitButtonElement.innerText = "Update";
     submitButtonElement.classList.add("btn-secondary");
     submitButtonElement.classList.remove("btn-primary");
@@ -226,14 +230,18 @@ const setEdit = (id)=>{
     editMode = true;
 }
 
+// FILTRAVIMAS PAGAL KATEGORIJA
+// kai mano inputo reiksme yra lygi produkto kategorijai laptopas , tada lenteles duomenys atsinaujina ir pasilieka laptopai 
+const productsarry = products;
+const productsInputElemnet = document.getElementById("category");
 
-// const dataElement = document.getElementById("data"),
-//         titleElement = document.getElementById("title"),
-//         priceElement = document.getElementById("price"),
-//         stockElement = document.getElementById("stock"),
-//         brandElement = document.getElementById("brand"),
-//         categoryElement = document.getElementById("category"),
-//         submitButtonElement = document.getElementById("submit");
+// Mano masyvas yra const products, jau apibreztas js lenteleje
+
+
+
+
+
+
 
 
 

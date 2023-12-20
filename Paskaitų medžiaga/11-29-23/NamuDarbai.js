@@ -48,24 +48,13 @@ let simbolis = "*";
 Kitassakinys = Kitassakinys.replaceAll('o', simbolis);
 console.log(Kitassakinys);
 
-// 7. Namu darbas
-
-let x = rand(0,2),rand(0,2), rand(0,2),rand(0,2);
-let y = rand(0,2),rand(0,2), rand(0,2),rand(0,2);
-let z = rand(0,2),rand(0,2), rand(0,2),rand(0,2);
-let q = rand(0,2),rand(0,2), rand(0,2),rand(0,2);
 
 
 
 
 
-// if xy[0] === 1 {
-//  { console.log()
 
-    
-// }
 
-// suskaiciuoti 1 2 0 
 
 
 

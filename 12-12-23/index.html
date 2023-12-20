@@ -18,34 +18,46 @@
         
     </style>
 </head>
+
 <body>
+
     <table>
-        <thead>
-            <tr>
-                <th>Numeris</th>
-                <th>Vardas</th>
-                <th>Pavardė</th>
-                <th>Amžius</th>
-                <th>Tautybė</th>
-            </tr>
-        </thead> 
-        <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody>
+        
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Vardas</th>
+                    <th>Pavardė</th>
+                    <th>Amžius</th>
+                    <th>Tautybė</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+      
         <form>
-            <label>Vardas<input type="text" placeholder="Vardas" id="Vardas"></label><br>
-            <label>Pavardė<input type="text" placeholder="Pavardė" id="Pavarde"></label><br>
-            <label>Amžius<input type="text" placeholder="Amžius" id="Amzius"></label><br>
-            <label>Tautybė<input type="text" placeholder="Tautybė" id="Tautybe"></label><br>
+            <div><label><span>Vardas</span><input type="text" placeholder="Firstname" id="Firstname"></label><br></div>
+            <div><label>Pavardė<input type="text" placeholder="Lastname" id="Lastname"></label><br></div>
+            <div><label>Amžius<input type="text" placeholder="Age" id="Age"></label><br></div>
+            <div><label>Tautybė<input type="text" placeholder="Nationality" id="Nationality"></label><br></div>
         </form>
-        <button id="Pridėti">ADD</button><br>
-        <button id="Delete">DELETE</button><br>
+
+        <div>
+            <h3>Pridėjimas</h3>
+            <button id="Add">ADD</button><br>
+        </div>
+        <div>
+            <h3>Pašalinimas</h3>
+            <button id="Delete">DELETE</button><br>
+        </div>
+       
         <!-- <button id="Delete">DELETE</button><br> -->
 
     </table>
