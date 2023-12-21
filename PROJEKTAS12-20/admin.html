@@ -57,14 +57,55 @@
         <option>fragrances</option>
         <option>smartphones</option>
         <option>skincare</option>
-    </select>
+            </select>
+            </div>
+    <!-- prideti inputai -->
+    <div class="col-4">
+        <label for="imageUrl">Nuotrauka</label>
+        <input 
+        class="form-control" 
+        type="text"
+        id="imageUrl"
+        name="imageUrl" />
+    </div>
+    <div class="col-4">
+        <label for="discount">Nuolaida</label>
+        <input 
+        class="form-control" 
+        type="number"
+        id="discount"
+        name="discount" 
+        min="0"
+        max="100"
+        value="0"/>
+    </div>
+    <div class="col-4">
+        <label for="rating">Reitingas</label>
+        <input 
+        class="form-control" 
+        type="number"
+        id="rating"
+        name="rating" 
+        min="0"
+        max="5"
+        value="0"/>
+    </div>
+    <div class="col-4">
+        <label for="rating">Produkto aprašymas</label>
+        <textarea 
+        name="description" 
+        id="description"
+        class="form-control"></textarea>
+    </div>
+    
+    
 <!-- Kai submit mygtukas yra formoje, ji interpretuoja  kaip mygtuka kuris skirtas isssiusti formos duomenis i serveri-->
-    <div>
-        <button id =  "submit"  class="btn btn-primary">submit</button>
+    <div class="col-4">
+        <button id =  "submit"  class="btn btn-primary">Submit</button>
     </div>
 </form>
 </div>
-<div>
+
     <table class="table table-striped">
         <thead>
             <tr>
@@ -80,28 +121,52 @@
             </tr>
         </thead>
         <tbody id="data">
-           <img src="" alt="item photo">
+           
         </tbody>
     </table>
-</div>
-<dialog id="productinfo">
-
-</dialog>
-
-        
+    <dialog class="d-flex flex-column" id="productinfo">
+        <div class="text-center">
+            <img src="https://i.dummyjson.com/data/products/1/thumbnail.jpg" alt="photo">
+        </div>
+        <div class="product-details p-2">
+            <span>Nuolaida:</span>
+            <span>-10%</span><br>
+            <span>Reitingas:</span>
+            <span>4.15</span><br>
+            <span>Produkto aprašymas:</span>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis nostrum id tempore. Rem, quam iste? Delectus, ratione eos illo voluptate at quasi, iusto accusantium blanditiis, corrupti perferendis mollitia impedit ea.</p>
+        </div>
+<!-- neveikia -->
+        <button  onclick = "modalDialog.close()"   class="btn btn-secondary col-2">Close</button>
+<!-- neveikia -->
+    </dialog>
     
 
 
 
 <!-- products.json ilgalaike saugykla -->
 
-    <script src="./js/products.js"></script>
+   
     <script>
         // CRUD:
         // CREATE - SUKURTI IRAŠĄ
         // READE - PERZIURETI IRAŠĄ
         // UPDATE - ATNAUJINTI IRAŠĄ
         // DELETE - ISTRINTI IRAŠĄ
+
+const products = JSON.parse(localStorage.getItem("products"));
+// console.log(typeOf products);
+
+
+// console.log(localStorage.getItem("products"));
+// ! invertinimo operatorius, grazina reiksme false
+if(!localStorage.getItem("products")){
+// console.log("pirmas");
+localStorage.setItem("products","[]");
+}
+
+
+let currentId = 1;
 
 let editMode = false;
 let currentProduct;
@@ -113,7 +178,13 @@ const dataElement = document.getElementById("data"),
         stockElement = document.getElementById("stock"),
         brandElement = document.getElementById("brand"),
         categoryElement = document.getElementById("category"),
-        submitButtonElement = document.getElementById("submit");
+        submitButtonElement = document.getElementById("submit"),
+        modalElement = document.getElementById("productinfo"),
+        photoElement = document.getElementById("imageUrl"),
+        discountElement = document.getElementById("discount"),
+        ratingElement = document.getElementById("rating"),
+        descriptionElement = document.getElementById("description");
+
 
 
 // PRODUKTŲ (LENTELĖS ĮRAŠŲ) ATVAIZDAVIMAS LENTELĖJE
@@ -124,7 +195,7 @@ const getTableContents= ()=> {
 // PRODUCT YRA MASYVAS, Į JO OBJEKTŲ PROPERCIUS KREIPIAMĖS.
     dynamicHTML += `
             <tr>
-                <td>${product.id}</td>
+                <td onclick="hideModal(${product.id})">${product.id}</td>
                 <td>${product.title}</td>
                 <td>${product.price}</td>
                 <td>${product.stock}</td>
@@ -154,8 +225,15 @@ dataElement.innerHTML = dynamicHTML;
 
 };
 
+
 // FUNKCIJOS IŠKVIETIMAS
 getTableContents();
+
+const hideModal = (id) => {
+    let elementIndex = products.findIndex((value)=>value.id === id);
+    const product = products[elementIndex];
+    modalElement.close();
+}
 
 
 // naujo elemento pridejimas
@@ -164,15 +242,40 @@ const createNewRecord = (event)=>{
     event.preventDefault();
     const newProduct = {
         // kompozicinis budas
-        id: products[products.length- 1].id + 1,
+        id: currentId,
         title: titleElement.value,
-        price: priceElement.value,
-        stock: stockElement.value,
+        price: +priceElement.value,
+        stock: +stockElement.value,
         brand: brandElement.value,
-        category: categoryElement.value
+        category: categoryElement.value,
+        description: descriptionElement.value,
+        discountPercentage: +discountElement.value,
+        rating:+ratingElement.value,
+        // + padaro number formata
+        thumbnail: photoElement.value,
+
+
+
+    //     //     id: 27,
+    //     title: "Flying Wooden Bird",
+    //     description: "Package Include 6 Birds with Adhesive Tape Shape: 3D Shaped Wooden Birds Material: Wooden MDF, Laminated 3.5mm",
+    //     price: 51,
+    //     discountPercentage: 15.58,
+    //     rating: 4.41,
+    //     stock: 17,
+    //     brand: "Flying Wooden",
+    //     category: "home-decoration",
+    //     thumbnail: https://i.dummyjson.com/data/products/27/thumbnail.webp
+    //   },
+
     };
-    products.push(newProduct)
+
+currentId++;
+localStorage.setItem("products", JSON.stringify(products));
+products.push(newProduct);
+
 // išsikviečiam funkcija
+
 getTableContents();
 
 // console.log(newProduct);
@@ -189,10 +292,11 @@ const deleteProduct = (id)=>{
     // ištrinam pagal indeksą, nurodom kiek istrinam
     products.splice(elementIndex, 1);
     getTableContents();
+    localStorage.setItem("products", JSON.stringify(products));
 }
 const updateProduct = (event)=>{
     event.preventDefault();
-    console.log("veikiu!");
+    // console.log("veikiu!");
     products[currentProduct].title = titleElement.value;
     products[currentProduct].price = priceElement.value;
     products[currentProduct].stock = stockElement.value;
@@ -211,7 +315,9 @@ const updateProduct = (event)=>{
     stockElement.value = "";
     brandElement.value = "";
     categoryElement.value = "";
-}
+
+    localStorage.setItem("products", JSON.stringify(products));
+};
 // ELEMENTO ATNAUJINIMAS PAGAL ID
 const setEdit = (event, id)=>{
    
@@ -235,10 +341,10 @@ const setEdit = (event, id)=>{
     editMode = true;
 }
 
-// FILTRAVIMAS PAGAL KATEGORIJA
-// kai mano inputo reiksme yra lygi produkto kategorijai laptopas , tada lenteles duomenys atsinaujina ir pasilieka laptopai 
-const productsarry = products;
-const productsInputElemnet = document.getElementById("category");
+// // FILTRAVIMAS PAGAL KATEGORIJA
+// // kai mano inputo reiksme yra lygi produkto kategorijai laptopas , tada lenteles duomenys atsinaujina ir pasilieka laptopai 
+// const productsarry = products;
+// const productsInputElemnet = document.getElementById("category");
 
 // Mano masyvas yra const products, jau apibreztas js lenteleje
 

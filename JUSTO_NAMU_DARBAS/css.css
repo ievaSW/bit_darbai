@@ -26,6 +26,7 @@ background-color: rgba(22, 117, 224, 0.69);
 border-color: rgba(0, 0, 0, 0.758);
 color: whitesmoke;
 }
+
 button:hover{
 width: 150px;
 height: 50px;
@@ -39,5 +40,20 @@ color: whitesmoke;
 font-weight: 600;
 color: rgba(0, 0, 0, 0.696);
 font-size: 20px;
+}
+sup{
+    color: whitesmoke;
+    text-decoration: line-through;
+}
+
+.discount{
+    background-color: rgba(78, 46, 174, 0.941);
+    width: 50px;
+    height: 30px;
+    color:whitesmoke;
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+    border-radius: 5px;
 }
 

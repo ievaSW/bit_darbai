@@ -1,0 +1,78 @@
+/* *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: green;
+}
+
+.container{
+    width: 30rem;
+    height: 20rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+
+
+    
+}
+
+.input-btn
+{
+    border: none;
+    padding: 20px;
+    border-bottom: 2px solid orange;
+
+}
+
+.btn{
+    width: 100px;
+    height: 50px;
+    border: none;
+    border-radius: 50px;
+    color: black;
+    background-color: blue;
+}
+
+p {
+    margin-top: 1.5rem;
+    font-size: 30px;
+} */
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgb(126, 172, 126);
+}
+
+.hollydays{
+    width:500px;
+    height: 500px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border-radius: 50%;
+    font-size: 90px;
+    background-color: rgb(134, 214, 134);
+    border: green solid 20px;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+
+
