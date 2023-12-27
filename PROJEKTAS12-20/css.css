@@ -1,0 +1,59 @@
+body{
+font-family:Arial, Helvetica, sans-serif;
+display: flex;
+justify-content: center;
+align-items: center; 
+background-color: rgba(22, 117, 224, 0.69);
+margin: 100px 100px;
+}
+
+img{
+display: block;
+margin-left: 0;
+margin-right: auto;
+width:75%;
+height:90%;
+border-radius: 20px;
+}
+
+
+button{
+width: 150px;
+height: 50px;
+font-weight: 600;
+border-radius: 20px;
+background-color: rgba(22, 117, 224, 0.69);
+border-color: rgba(0, 0, 0, 0.758);
+color: whitesmoke;
+}
+
+button:hover{
+width: 150px;
+height: 50px;
+font-weight: 600;
+border-radius: 20px;
+background-color: rgba(10, 10, 10, 0.69);
+border-color: rgba(0, 0, 0, 0.758);
+color: whitesmoke;   
+}
+.price, h5{
+font-weight: 600;
+color: rgba(0, 0, 0, 0.696);
+font-size: 20px;
+}
+sup{
+    color: whitesmoke;
+    text-decoration: line-through;
+}
+
+.discount{
+    background-color: rgba(78, 46, 174, 0.941);
+    width: 50px;
+    height: 30px;
+    color:whitesmoke;
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+    border-radius: 5px;
+}
+

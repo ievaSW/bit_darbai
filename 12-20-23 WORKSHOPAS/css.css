@@ -51,28 +51,7 @@ p {
 } */
 
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: rgb(126, 172, 126);
-}
 
-.hollydays{
-    width:500px;
-    height: 500px;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    border-radius: 50%;
-    font-size: 90px;
-    background-color: rgb(134, 214, 134);
-    border: green solid 20px;
-    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-}
 
 
 

@@ -11,6 +11,12 @@
     <h1>CRUD</h1>
 
 <div class="container">
+    <nav>
+        <a class="btn btn-secondary" href="
+        ">Produktai</a>
+        <a class="btn btn-secondary" href="
+        ">Admin panele</a>
+    </nav>
     <!-- containeris neleidzia daugiau plesti nei numatyta -->
 <form action="">
     <!-- pasidarom grida  -->
@@ -57,6 +63,7 @@
         <option>fragrances</option>
         <option>smartphones</option>
         <option>skincare</option>
+        <option>home-decoration</option>
             </select>
             </div>
     <!-- prideti inputai -->
@@ -91,7 +98,7 @@
         value="0"/>
     </div>
     <div class="col-4">
-        <label for="rating">Produkto aprašymas</label>
+        <label for="description">Produkto aprašymas</label>
         <textarea 
         name="description" 
         id="description"
@@ -125,7 +132,7 @@
         </tbody>
     </table>
     <dialog class="d-flex flex-column" id="productinfo">
-        <div class="text-center">
+        <!-- <div class="text-center">
             <img src="https://i.dummyjson.com/data/products/1/thumbnail.jpg" alt="photo">
         </div>
         <div class="product-details p-2">
@@ -136,9 +143,9 @@
             <span>Produkto aprašymas:</span>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis nostrum id tempore. Rem, quam iste? Delectus, ratione eos illo voluptate at quasi, iusto accusantium blanditiis, corrupti perferendis mollitia impedit ea.</p>
         </div>
-<!-- neveikia -->
-        <button  onclick = "modalDialog.close()"   class="btn btn-secondary col-2">Close</button>
-<!-- neveikia -->
+
+        <button  onclick = "modalDialog.close()"   class="btn btn-secondary col-2">Close</button> -->
+
     </dialog>
     
 
@@ -154,7 +161,7 @@
         // UPDATE - ATNAUJINTI IRAŠĄ
         // DELETE - ISTRINTI IRAŠĄ
 
-const products = JSON.parse(localStorage.getItem("products"));
+
 // console.log(typeOf products);
 
 
@@ -164,10 +171,18 @@ if(!localStorage.getItem("products")){
 // console.log("pirmas");
 localStorage.setItem("products","[]");
 }
+// pasitikrinam ar yra local storage toks dalykas kaip currentId
 
 
-let currentId = 1;
+const products = JSON.parse(localStorage.getItem("products"));
 
+if(!localStorage.getItem("currentId"))
+// viskas kas yra saugoma local storage turi buti stringas
+{
+localStorage.setItem("currentId","1");
+}
+
+let currentId = localStorage.getItem("currentId");
 let editMode = false;
 let currentProduct;
 // DUOMENŲ ATVAIZDAVIMAS LENTELĖJE
@@ -195,7 +210,7 @@ const getTableContents= ()=> {
 // PRODUCT YRA MASYVAS, Į JO OBJEKTŲ PROPERCIUS KREIPIAMĖS.
     dynamicHTML += `
             <tr>
-                <td onclick="hideModal(${product.id})">${product.id}</td>
+                <td onclick="showModal(${product.id})">${product.id}</td>
                 <td>${product.title}</td>
                 <td>${product.price}</td>
                 <td>${product.stock}</td>
@@ -229,11 +244,29 @@ dataElement.innerHTML = dynamicHTML;
 // FUNKCIJOS IŠKVIETIMAS
 getTableContents();
 
-const hideModal = (id) => {
+// MODALINIO LANGO DINAMINIS KEITIMAS PAGAL PRIDEDAMUS ITEMUS PAGAL ID
+const showModal = (id) => {
     let elementIndex = products.findIndex((value)=>value.id === id);
     const product = products[elementIndex];
-    modalElement.close();
-}
+    let productinfoHTML =`
+    <div class="text-center">
+            <img src="${product.thumbnail}">
+        </div>
+        <div class="product-details p-2">
+            <span>Nuolaida:</span>
+            <span>${product.discountPercentage}%</span><br>
+            <span>Reitingas:</span>
+            <span>${product.rating}</span><br>
+            <span>Produkto aprašymas:</span>
+            <p>${product.description}</p>
+        </div>
+<!-- neveikia -->
+        <button  onclick = "modalDialog.close()"   class="btn btn-secondary col-2">Close</button>
+<!-- neveikia -->`;
+
+    modalElement.innerHTML = productinfoHTML;
+    modalElement.showModal();
+};
 
 
 // naujo elemento pridejimas
@@ -277,7 +310,7 @@ products.push(newProduct);
 // išsikviečiam funkcija
 
 getTableContents();
-
+localStorage.getItem("currentId", currentId)
 // console.log(newProduct);
 };
 
@@ -292,6 +325,7 @@ const deleteProduct = (id)=>{
     // ištrinam pagal indeksą, nurodom kiek istrinam
     products.splice(elementIndex, 1);
     getTableContents();
+    // local storage eilute turi eiti po to kai yra modifikuojamas masyvas
     localStorage.setItem("products", JSON.stringify(products));
 }
 const updateProduct = (event)=>{
@@ -301,7 +335,12 @@ const updateProduct = (event)=>{
     products[currentProduct].price = priceElement.value;
     products[currentProduct].stock = stockElement.value;
     products[currentProduct].brand = brandElement.value;
-    products[currentProduct].category = categoryElement.value
+    products[currentProduct].category = categoryElement.value;
+    products[currentProduct].rating = ratingElement.value;
+    products[currentProduct].discountPercentage = discountElement.value;
+    products[currentProduct].description = descriptionElement.value;
+    products[currentProduct].thumbnail = photoElement.value;
+
 
     getTableContents();
     currentProduct = undifiend;
@@ -315,6 +354,10 @@ const updateProduct = (event)=>{
     stockElement.value = "";
     brandElement.value = "";
     categoryElement.value = "";
+    ratingElement.value = "";
+    discountElement.value = "";
+    descriptionElement.value = "";
+    photoElement.value = "";
 
     localStorage.setItem("products", JSON.stringify(products));
 };
@@ -332,6 +375,10 @@ const setEdit = (event, id)=>{
     stockElement.value = product.stock;
     brandElement.value = product.brand;
     categoryElement.value = product.title;
+    ratingElement.value = product.rating;
+    discountElement.value = product.discount;
+    descriptionElement.value = product.description;
+    photoElement.value = product.photo;
 
     submitButtonElement.innerText = "Update";
     submitButtonElement.classList.add("btn-secondary");
