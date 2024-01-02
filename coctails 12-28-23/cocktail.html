@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kokteilių aplikacija</title>
+   <link rel="stylesheet" href="css.css">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+   <!-- fontas is google font -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<!-- 1. selectuose turi buti trys skirtingi fetchai pacioje pradzioje
+2. Turi buti atvaizduojami visi kokteiliai
+3. pasidaryti filtraciją pagal du kriterijus
+4. pasidaryti modalinio lango atvaizdavimas
+5. responsivumas -->
+    
+<nav class="container">
+    <div class="navigation">
+        <input id="Enter-drink" type="text" placeholder="Ieškokite kokteilio">
+        <select id="drink-category">Pasirinkite kategoriją</select>
+        <select id="drink-glasstype">Pasirinkite stikrlinės tipą</select>
+        <select id="drink-ingridients">Pasirinktite ingridientą</select>
+        <button id="search" class="search">Ieškoti</button>
+        <button id="lucky" class="lucky">Man sekasi</button>
+    </div>
+    <div class="container  coctails">
+        <div class="drink">cokctail</div>
+        <div class="drink">cokctail</div>
+        <div class="drink">cokctail</div>
+        <div class="drink">cokctail</div>
+    </div>
+</nav>
+<!-- MODALINIS LANGAS -->
+<!-- <div class="modal-background">
+    <div class="modal">
+        <div class="buttons">
+            <h3>Very interesting text</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing e inventore laboriosam ad tenetur? Et veritatis sint ad! Nesciunt magnam, autem quam nostrum doloremque dolor illum optio odio ipsa tempore explicabo iste minima necessitatibus porro placeat voluptatibus assumenda cumque corporis ipsam numquam voluptas cum quaerat! Pariatur, quas aperiam. Dignissimos minus vero perferendis, fugiat enim velit recusandae consequuntur?</p>
+            <hr/>
+            <button onclick = "closeModal()">Close</button>
+        </div>
+    </div>
+</div> -->
+
+<!-- <div class="container"></div>
+<h3>Title</h3>
+<p>lit quisquam facere accusantium laborum possimus cum id? Ullam laborum consequuntur quis. Saepe voluptatem, corrupti ullam minus libero necessitatibus hic sint impedit quas, quis obcaecati eaque odio tenetur molestias.</p>
+<hr>
+<h3>Title</h3>
+<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam natus itaque neque sed earum magnam harum exercitationem provident architecto, veritatis aspernaturibus hic sint impedit quas, quis obcaecati eaque odio tenetur molestias.</p>
+<hr>
+<button onclick="modalDialog.show()">Open Modal</button>
+Naujas HTML tagas modaliniam langui kurti -->
+<!-- <dialog class="half-width">
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam natus itaque neque sed earum magnam harum exercitationem provident architecto, veritatis aspernatur culpa porro ea, eaque, rem commodi ad quod? Ipsam dolores fugit error adipisci odit, expedita tempore ratione optio. Vel officia fuga voluptates, est tempora totam exercitationem quo nesciunt, autem veniam debitis beatae asperiores commodi id harum cum voluptatem quia dolor incidunt amet! Dignissimos, obcaecati. Dignissimos, libero rerum, vitae tempore debitis velit quisquam facere accusantium laborum possimus cum id? Ullam laborum consequuntur quis. Saepe voluptatem, corrupti ullam minus libero necess</p>
+    <button onclick = "modalDialog.close()">Close</button> -->
+<!-- </dialog> -->
+
+
+<script src="js.js"></script>
+</body>
+</html>
