@@ -21,8 +21,8 @@
 4. pasidaryti modalinio lango atvaizdavimas
 5. responsivumas -->
     
-<nav class="container">
-    <div class="navigation">
+<nav>
+    <div class="navigation p-2">
         <input id="Enter-drink" type="text" placeholder="Ieškokite kokteilio">
         <select id="drink-category">Pasirinkite kategoriją</select>
         <select id="drink-glasstype">Pasirinkite stikrlinės tipą</select>
@@ -30,38 +30,29 @@
         <button id="search" class="search">Ieškoti</button>
         <button id="lucky" class="lucky">Man sekasi</button>
     </div>
-    <div class="container  coctails">
-        <div class="drink">cokctail</div>
-        <div class="drink">cokctail</div>
-        <div class="drink">cokctail</div>
-        <div class="drink">cokctail</div>
+    <div class="coctails" >
+        <div class="drink row row-cols-3 text-center" id="cocktails">
+            <img class="" src="" alt="photo"/>
+            <p class="drinkTitle"></p>
+        </div>
     </div>
 </nav>
 <!-- MODALINIS LANGAS -->
-<!-- <div class="modal-background">
-    <div class="modal">
-        <div class="buttons">
-            <h3>Very interesting text</h3>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing e inventore laboriosam ad tenetur? Et veritatis sint ad! Nesciunt magnam, autem quam nostrum doloremque dolor illum optio odio ipsa tempore explicabo iste minima necessitatibus porro placeat voluptatibus assumenda cumque corporis ipsam numquam voluptas cum quaerat! Pariatur, quas aperiam. Dignissimos minus vero perferendis, fugiat enim velit recusandae consequuntur?</p>
-            <hr/>
-            <button onclick = "closeModal()">Close</button>
-        </div>
-    </div>
-</div> -->
 
-<!-- <div class="container"></div>
-<h3>Title</h3>
-<p>lit quisquam facere accusantium laborum possimus cum id? Ullam laborum consequuntur quis. Saepe voluptatem, corrupti ullam minus libero necessitatibus hic sint impedit quas, quis obcaecati eaque odio tenetur molestias.</p>
-<hr>
-<h3>Title</h3>
-<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam natus itaque neque sed earum magnam harum exercitationem provident architecto, veritatis aspernaturibus hic sint impedit quas, quis obcaecati eaque odio tenetur molestias.</p>
-<hr>
-<button onclick="modalDialog.show()">Open Modal</button>
-Naujas HTML tagas modaliniam langui kurti -->
-<!-- <dialog class="half-width">
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam natus itaque neque sed earum magnam harum exercitationem provident architecto, veritatis aspernatur culpa porro ea, eaque, rem commodi ad quod? Ipsam dolores fugit error adipisci odit, expedita tempore ratione optio. Vel officia fuga voluptates, est tempora totam exercitationem quo nesciunt, autem veniam debitis beatae asperiores commodi id harum cum voluptatem quia dolor incidunt amet! Dignissimos, obcaecati. Dignissimos, libero rerum, vitae tempore debitis velit quisquam facere accusantium laborum possimus cum id? Ullam laborum consequuntur quis. Saepe voluptatem, corrupti ullam minus libero necess</p>
-    <button onclick = "modalDialog.close()">Close</button> -->
-<!-- </dialog> -->
+
+
+
+<!-- Naujas HTML tagas modaliniam langui kurti  -->
+
+<dialog open id="cocktailingidients" class="modal1">
+    <button>close</button>
+    <img src="https://www.thecocktaildb.com/images/media/drink/jntghf1606771886.jpg" alt="Photo">
+    <p>category</p>
+    <p>type</p>
+    <p>glass</p>
+    <p>ingridients</p>
+    <p>Recipe</p>
+</dialog>
 
 
 <script src="js.js"></script>
