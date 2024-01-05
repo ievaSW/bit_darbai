@@ -11,10 +11,19 @@
    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
-
+    
+    <dialog id="cocktailInfo" class="modal1">
+        <i id="modalclosebutton" class="modalbutton bi bi-x-circle-fill "></i>
+        <img id="strDrinkThumb" src="https://www.thecocktaildb.com/images/media/drink/jntghf1606771886.jpg" alt="Photo">
+        <p id="strDrink">strDrink</p>
+        <p id="strAlcoholic">strAlcoholic</p>
+        <p id="strGlass">strGlass</p>
+        <p id="stringridients">stringridients</p>
+        <p id="Recipe">Recipe</p>
+    </dialog>
 <!-- 1. selectuose turi buti trys skirtingi fetchai pacioje pradzioje
 2. Turi buti atvaizduojami visi kokteiliai
 3. pasidaryti filtraciją pagal du kriterijus
@@ -44,17 +53,10 @@
 
 <!-- Naujas HTML tagas modaliniam langui kurti  -->
 
-<dialog open id="cocktailingidients" class="modal1">
-    <button>close</button>
-    <img src="https://www.thecocktaildb.com/images/media/drink/jntghf1606771886.jpg" alt="Photo">
-    <p>category</p>
-    <p>type</p>
-    <p>glass</p>
-    <p>ingridients</p>
-    <p>Recipe</p>
-</dialog>
 
 
+<!-- www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11007 -->
+<!-- kokteilio kiti duomenys kur ingridientai ir receptai-->
 <script src="js.js"></script>
 </body>
 </html>

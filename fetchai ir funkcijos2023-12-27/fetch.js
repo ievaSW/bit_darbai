@@ -37,7 +37,7 @@
 // Kas yra end pointas?
 // Kodel naudojant document.write console raso vilation?
 // Kas yra parsinimas?
-// Promisus papasakos veliaus :)
+// Promisus papasakos veliau :)
 
 
 const breedSelectElement = document.getElementById("breeds-select")

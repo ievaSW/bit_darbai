@@ -1,7 +1,4 @@
 body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-family: "Rubik Doodle Shadow";
     margin: 0;
 
@@ -36,7 +33,7 @@ text-align: center;
     height: 100%;
 }
 .coctails{
-    max-width: 1400px;
+    max-width: 100%;
     display: flex;
     justify-content: space-between;
     background-color: rgb(208, 176, 138);
@@ -51,11 +48,29 @@ img{
     width:300px;
     height:300px;
     border-radius: 50px;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    margin: 10px 10px;
+    
 }
 .search, .lucky {
     background-color: rgb(244, 243, 246);
     border-radius: 10px;
     
+}
+
+.modal1{
+    position:fixed;
+    display:flex;
+    flex-direction: column;
+    border: none;
+    background-color:  rgb(131, 127, 122);
+    border-radius: 10px;
+    /* margin-top: 200px; */
+}
+.modalbutton{
+    cursor: pointer;
 }
 
     

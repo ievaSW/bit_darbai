@@ -5,6 +5,8 @@ const  SearchDrinkButton = document.getElementById("search")
 const  LuckyDrinkButton = document.getElementById("lucky")
 const  EnterDrinkInput = document.getElementById("Enter-drink")
 const  DrinkPhotodynamicHTML = document.getElementById("cocktails")
+const CocktailInfo = document.getElementById("cocktailInfo")
+const modalclosebutton = document.getElementById("modalclosebutton")
 
 // visu reiksmiu objektas
 
@@ -15,20 +17,21 @@ const selectValues = {};
 // const ingredientsArry = [];
 
 const drinkArry =[];
+// console.log(drinkArry);
 
 async function SelectElement(){
     const allUrls = ["https://thecocktaildb.com/api/json/v1/1/list.php?c=list", 
                      "https://thecocktaildb.com/api/json/v1/1/list.php?g=list",
                      "https://thecocktaildb.com/api/json/v1/1/list.php?i=list"];
 
-
     const allPromises = allUrls.map((url)=>fetch(url).then((response)=>response.json()));
     // console.log(allPromises);
     const allValues = await Promise.all(allPromises);
     // nerodo
-    console.log(allValues);
+    // console.log(allValues);
 
     const [allCategories, allGlasses, allIngredients] = allValues;
+
     selectValues.categories = allCategories.drinks.map((categoryObj)=>categoryObj.strCategory);
     selectValues.glasses = allGlasses.drinks.map((glassesObj)=>glassesObj.strGlass);
     selectValues.ingredients = allIngredients.drinks.map((ingredientsObj)=>ingredientsObj.strIngredient1);
@@ -38,7 +41,7 @@ async function SelectElement(){
     AllSelects(allCategories.drinks, DrinkCategorySelect, "strCategory")
     AllSelects(allGlasses.drinks, DrinkGlassTypeSelect, "strGlass")
     AllSelects(allIngredients.drinks, DrinkIngredientsSelect, "strIngredient1")
-
+console.log(allValues);
 }
 
 
@@ -110,7 +113,7 @@ async function Alldrinks()
     const allValues = await Promise.all(allPromises);
         // paraso visu gerymu papusinima i drink arry
     allValues.forEach((value)=>drinkArry.push(...value.drinks))
-       console.log(allValues);
+    //    console.log(allValues);
     }
 
 function AlldrinksHTML(drinks){
@@ -118,7 +121,7 @@ function AlldrinksHTML(drinks){
     let dynamicHTML = "";
     for(let drink of drinks){
         dynamicHTML += `
-        <div class="drink">
+        <div class="drink" onclick="open(${drink.idDrink})" >
             <img src="${drink.strDrinkThumb}" alt="photo"/>
             <p>${drink.strDrink}</p>
         </div>`
@@ -151,40 +154,38 @@ if(EnterDrink)
 if (category !== "Pasirinkite kategoriją")
 {   
     // pirma parsisiunciam duomenis is API (su fetch, kaip suprantu :) tuomet tik atliekam filtracija
-    const promise = await fetch
-    ( `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category.replaceAll(" ", "_" )}`);
-
+    const promise = await fetch( `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category.replaceAll(" ", "_" )}`);
     const drinksofCategory = await promise.json();
-    // console.log(drinksofCategory);
+   
     filteredArry = filteredArry.filter((drink)=> drinksofCategory.drinks.some
     ((drinkOfCategory)=>drink.idDrink === drinkOfCategory.idDrink));
 }
 
 
 // FILTRACIJA PAGAL STIKLIUKA
-if (glass !=="Pasirinkite stiklinės tipą" )
-{
+if (glass !=="Pasirinkite stiklinės tipą" ) {
 const promise = await fetch(`https://thecocktaildb.com/api/json/v1/1/filter.php?g=${glass.replaceAll(" ", "_" )}`);
 const drinksofglass = await promise.json();
-console.log(drinksofglass)
+// console.log(drinksofglass)
 filteredArry = filteredArry.filter((drink)=> drinksofglass.drinks.some
 ((drinksofglass)=>drink.idDrink === drinksofglass.idDrink));
-
+}
 // FILTRACIJA PAGAL INGRIDIENTA
 if (ingredient !== "Pasirinkite ingridientą")
 {
-const promise = await fetch(`https://thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`);
+const promise = await fetch(`https://thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient.replaceAll(" ", "_")}`);
 const drinksofIngredient = await promise.json();
-console.log(drinksofIngredient)
+
 filteredArry = filteredArry.filter((drink)=> drinksofIngredient.drinks.some
 ((drinksofIngredient)=>drink.idDrink === drinksofIngredient.idDrink));
-}
 }
 AlldrinksHTML(filteredArry);
 }
 
+
+
 async function initialization()
-{
+{   close();
     // selectu uzpildymas
     await SelectElement();
     await Alldrinks();
@@ -198,6 +199,52 @@ async function initialization()
 
 initialization();
 
+// DINAMINIS MODALINIO LANGO ATVAIZDAVIMAS
+async function open(idDrink){
+    CocktailInfo.style.display = "flex";
+       
+    const promise = await fetch(`https://thecocktaildb.com/api/json/v1/1/lookup.php?i=${idDrink}`);
+    const response = await promise.json();
+    console.log(response);
+
+    // const drink = response.drinks[0];
+
+    // document.getElementById("strDrink").innerText = drink.strCategory;
+    // document.getElementById("strAlcoholic").innerText = drink.strAlcoholic;
+    // document.getElementById("strGlass").innerText = drink.strGlass;
+    // document.getElementById("stringridients").innerText = drink.stringridients;
+    // document.getElementById("Recipe").innerText = drink.strCategory;
+    // document.getElementById("strDrinkThumb").src = drink.strDrinkThumb;
+
+    }
+
+DrinkPhotodynamicHTML.addEventListener("click", open)
+
+
+
+function close(){
+    CocktailInfo.style.display = "none";
+}
+modalclosebutton.addEventListener("click", close)
+
+
+
+
+
+
+// console.log(drinkArry)
+
+
+
+
+
+
+
+// fetch("www.thecocktaildb.com/api/json/v1/1/lookup.php?iid=552")
+// .then((response) => response.json())
+// .then((response)=>console.log(response))
+// .then((response) => AllSelects(response.drinks, DrinkGlassTypeSelect, "strGlass"))
+// .catch((error)=> console.log(error));
 
 // MANO DARYTA PACIOS
 // function DrinkCategory(categories)
