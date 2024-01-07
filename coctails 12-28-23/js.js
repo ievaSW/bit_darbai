@@ -7,7 +7,7 @@ const  EnterDrinkInput = document.getElementById("Enter-drink")
 const  DrinkPhotodynamicHTML = document.getElementById("cocktails")
 const CocktailInfo = document.getElementById("cocktailInfo")
 const modalclosebutton = document.getElementById("modalclosebutton")
-
+const drinkphoto = document.getElementById("strDrinkThumb")
 // visu reiksmiu objektas
 
 const selectValues = {};
@@ -121,7 +121,7 @@ function AlldrinksHTML(drinks){
     let dynamicHTML = "";
     for(let drink of drinks){
         dynamicHTML += `
-        <div class="drink" onclick="open(${drink.idDrink})" >
+        <div class="drink" onclick="open(${drink.idDrink})")>
             <img src="${drink.strDrinkThumb}" alt="photo"/>
             <p>${drink.strDrink}</p>
         </div>`
@@ -202,7 +202,6 @@ initialization();
 // DINAMINIS MODALINIO LANGO ATVAIZDAVIMAS
 async function open(idDrink){
     CocktailInfo.style.display = "flex";
-       
     const promise = await fetch(`https://thecocktaildb.com/api/json/v1/1/lookup.php?i=${idDrink}`);
     const response = await promise.json();
     console.log(response);
