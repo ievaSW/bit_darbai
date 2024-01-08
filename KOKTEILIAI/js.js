@@ -129,7 +129,6 @@ function AlldrinksHTML(drinks){
     DrinkPhotodynamicHTML.innerHTML = dynamicHTML;
 }
 
-// onclick="openModal(${drink.idDrink})"
 // FILTRACIJA
 
 
@@ -200,33 +199,41 @@ async function initialization()
 
 initialization();
 
-// fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php")
-// .then((response)=>response.json())
-// .then((response)=>console.log(response));
-
-
-    
-
+// https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11007
 
 // DINAMINIS MODALINIO LANGO ATVAIZDAVIMAS
 async function openModal(idDrink){
     CocktailInfo.style.display = "flex";
     const promise = await fetch(`https://thecocktaildb.com/api/json/v1/1/lookup.php?i=${idDrink}`);
     const response = await promise.json();
-    
-    // 
-    // const Ingredienturl = fetch("https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list")
-// .then((response) => response.json())
-// .then((response)=>console.log(response.drinks));
 
     const drink = response.drinks[0];
-// console.log(drink)
+    console.log(drink)
     document.getElementById("strDrink").innerText = drink.strDrink;
     document.getElementById("strCategory").innerText = drink.strCategory;
     document.getElementById("strAlcoholic").innerText = drink.strAlcoholic;
     document.getElementById("strGlass").innerText = drink.strGlass;
     // ingridientus sutvarkyti
-    document.getElementById("stringridients").innerText = drink.Ingredient1;
+    // console.log(drink.value)
+// if(drink.value !== null)
+
+    document.getElementById("stringridients").innerText = drink.strIngredient1 +
+                                                            drink.strIngredient2 +
+                                                            drink.strIngredient3 +
+                                                            drink.strIngredient4 +
+                                                            drink.strIngredient5 +
+                                                            drink.strIngredient6 +
+                                                            drink.strIngredient7 +
+                                                            drink.strIngredient8 +
+                                                            drink.strIngredient9 +
+                                                            drink.strIngredient10 +
+                                                            drink.strIngredient11 +
+                                                            drink.strIngredient12 +
+                                                            drink.strIngredient13 +
+                                                            drink.strIngredient14 +
+                                                            drink.strIngredient15;
+                                                            
+
     document.getElementById("Recipe").innerText = drink.strInstructions;
     document.getElementById("strDrinkThumb").src = drink.strDrinkThumb;
 
@@ -262,9 +269,6 @@ async function buttonlucky(){
 }
 
 LuckyDrinkButton.addEventListener("click", buttonlucky);
-
-
-// console.log(drinkArry)
 
 
 

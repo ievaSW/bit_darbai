@@ -76,7 +76,7 @@ img{
     border: none;
     background-color:  rgb(34, 32, 32);
     border-radius: 80px;
-    margin-top: 100px;
+    margin-top: 50px;
     width:25%;
     align-items: center;
     color: rgb(223, 215, 215);
@@ -105,6 +105,17 @@ p{
     /* color: rgb(240, 229, 229); */
     text-shadow: 2px 2px 2px #101010b5;
     text-transform: uppercase;
+}
+
+a:link, a:hover{
+    text-decoration: none;
+    font-family: 'Rubik Dirt', system-ui;
+    letter-spacing: 2px;
+    color: black;
+}
+.abclinks{
+    text-align: center;
+    font-size: 50px;
 }
 
     
