@@ -7,7 +7,7 @@ const  EnterDrinkInput = document.getElementById("Enter-drink")
 const  DrinkPhotodynamicHTML = document.getElementById("cocktails")
 const CocktailInfo = document.getElementById("cocktailInfo")
 const modalclosebutton = document.getElementById("modalclosebutton")
-const drinkphoto = document.getElementById("strDrinkThumb")
+const drinkphoto = document.getElementById("DrinkPhoto")
 // visu reiksmiu objektas
 
 const selectValues = {};
@@ -121,15 +121,15 @@ function AlldrinksHTML(drinks){
     let dynamicHTML = "";
     for(let drink of drinks){
         dynamicHTML += `
-        <div class="drink" onclick="open(${drink.idDrink})")>
+        <div class="drink" onclick="openModal(${drink.idDrink})">
             <img src="${drink.strDrinkThumb}" alt="photo"/>
-            <p>${drink.strDrink}</p>
+            <h3 class="drinkTitle">${drink.strDrink}</h3>
         </div>`
     }
     DrinkPhotodynamicHTML.innerHTML = dynamicHTML;
 }
 
-
+// onclick="openModal(${drink.idDrink})"
 // FILTRACIJA
 
 
@@ -185,7 +185,8 @@ AlldrinksHTML(filteredArry);
 
 
 async function initialization()
-{   close();
+{   
+    closeModal();
     // selectu uzpildymas
     await SelectElement();
     await Alldrinks();
@@ -199,36 +200,68 @@ async function initialization()
 
 initialization();
 
+// fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php")
+// .then((response)=>response.json())
+// .then((response)=>console.log(response));
+
+
+    
+
+
 // DINAMINIS MODALINIO LANGO ATVAIZDAVIMAS
-async function open(idDrink){
+async function openModal(idDrink){
     CocktailInfo.style.display = "flex";
     const promise = await fetch(`https://thecocktaildb.com/api/json/v1/1/lookup.php?i=${idDrink}`);
     const response = await promise.json();
-    console.log(response);
+    
+    // 
+    // const Ingredienturl = fetch("https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list")
+// .then((response) => response.json())
+// .then((response)=>console.log(response.drinks));
 
-    // const drink = response.drinks[0];
-
-    // document.getElementById("strDrink").innerText = drink.strCategory;
-    // document.getElementById("strAlcoholic").innerText = drink.strAlcoholic;
-    // document.getElementById("strGlass").innerText = drink.strGlass;
-    // document.getElementById("stringridients").innerText = drink.stringridients;
-    // document.getElementById("Recipe").innerText = drink.strCategory;
-    // document.getElementById("strDrinkThumb").src = drink.strDrinkThumb;
+    const drink = response.drinks[0];
+// console.log(drink)
+    document.getElementById("strDrink").innerText = drink.strDrink;
+    document.getElementById("strCategory").innerText = drink.strCategory;
+    document.getElementById("strAlcoholic").innerText = drink.strAlcoholic;
+    document.getElementById("strGlass").innerText = drink.strGlass;
+    // ingridientus sutvarkyti
+    document.getElementById("stringridients").innerText = drink.Ingredient1;
+    document.getElementById("Recipe").innerText = drink.strInstructions;
+    document.getElementById("strDrinkThumb").src = drink.strDrinkThumb;
 
     }
 
-DrinkPhotodynamicHTML.addEventListener("click", open)
+    DrinkPhotodynamicHTML.addEventListener("click", openModal)
 
 
 
-function close(){
+function closeModal(){
     CocktailInfo.style.display = "none";
 }
-modalclosebutton.addEventListener("click", close)
+modalclosebutton.addEventListener("click", closeModal)
 
+// MAN SEKASI MYGTUKAS
+async function buttonlucky(){
+    CocktailInfo.style.display = "flex";
+    const promise = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`);
+    const response = await promise.json();
+    
+    
 
+    const drink = response.drinks[0];
+// console.log(drink)
+    document.getElementById("strDrink").innerText = drink.strDrink;
+    document.getElementById("strCategory").innerText = drink.strCategory;
+    document.getElementById("strAlcoholic").innerText = drink.strAlcoholic;
+    document.getElementById("strGlass").innerText = drink.strGlass;
+    // ingridientus sutvarkyti
+    document.getElementById("stringridients").innerText = drink.Ingredient1;
+    document.getElementById("Recipe").innerText = drink.strInstructions;
+    document.getElementById("strDrinkThumb").src = drink.strDrinkThumb;
+}
 
-
+LuckyDrinkButton.addEventListener("click", buttonlucky);
 
 
 // console.log(drinkArry)

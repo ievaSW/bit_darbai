@@ -4,25 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kokteilių aplikacija</title>
+    <!-- googlefontas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
+    <!-- googlefontas svarbu, kad butu virs CSS failo!!!!-->
    <link rel="stylesheet" href="css.css">
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-   <!-- fontas is google font -->
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
+  
+   
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
     
-    <dialog id="cocktailInfo" class="modal1">
-        <i id="modalclosebutton" class="modalbutton bi bi-x-circle-fill "></i>
-        <img id="strDrinkThumb" src="https://www.thecocktaildb.com/images/media/drink/jntghf1606771886.jpg" alt="Photo">
+    <dialog id="cocktailInfo" class="modal1 col-3">
+        
+        <div class="p-2">
+            <img id="strDrinkThumb" src="https://www.thecocktaildb.com/images/media/drink/jntghf1606771886.jpg" alt="Photo">
+        </div>
         <p id="strDrink">strDrink</p>
+        <p id="strCategory">strCategory</p>
         <p id="strAlcoholic">strAlcoholic</p>
         <p id="strGlass">strGlass</p>
         <p id="stringridients">stringridients</p>
         <p id="Recipe">Recipe</p>
+        <p><i id="modalclosebutton" class="modalbutton bi bi-x-circle-fill "></i></p>
     </dialog>
 <!-- 1. selectuose turi buti trys skirtingi fetchai pacioje pradzioje
 2. Turi buti atvaizduojami visi kokteiliai
@@ -31,18 +39,18 @@
 5. responsivumas -->
     
 <nav>
-    <div class="navigation p-2">
+    <div class="navigation p-2 container">
         <input id="Enter-drink" type="text" placeholder="Ieškokite kokteilio">
-        <select id="drink-category"><option>Pasirinkite kategoriją</option></select>
+        <select class="" id="drink-category"><option>Pasirinkite kategoriją</option></select>
         <select id="drink-glasstype"><option>Pasirinkite stiklinės tipą</option></select>
         <select id="drink-ingridients"><option>Pasirinkite ingridientą</option></select>
         <button id="search" class="search">Ieškoti</button>
         <button id="lucky" class="lucky">Man sekasi</button>
     </div>
-    <div class="coctails" >
-        <div class="drink row row-cols-3 text-center" id="cocktails">
-            <img class="" src="" alt="photo"/>
-            <p class="drinkTitle"></p>
+    <div class="coctails bg-body-tertiary" >
+        <div class="drink  row row-cols-4" id="cocktails">
+            <img id="DrinkPhoto" src="" alt="photo"/>
+            <h3 class="drinkTitle "></h3>
         </div>
     </div>
 </nav>
