@@ -103,7 +103,9 @@ server.get("/user/:Id", (req, res)=>{
     res.send("Labas pasauli");
 });
 
-server.post("/.register", (req,res)=>{
+server.post("/register", (req,res)=>{
+    // su try catch butinas validuojant vartotojo duomenis
+    try{
     console.log(req.body);
     const username = req.body.username;
     const email = req.body.email;
@@ -115,8 +117,11 @@ server.post("/.register", (req,res)=>{
         email: email,
         password: password,
     });
-
-    res.send("atsakymas is serverio");
+    
+    res.send("Atsakymas is serverio");
+} catch(err){
+    res.send("Netinkami duomenys");
+}
 });
 
 server.get("/users", (req,res)=>{
@@ -125,6 +130,7 @@ server.get("/users", (req,res)=>{
 });
 
 server.get("/users/:Id", (req,res)=>{
+    console.log(isNaN(+req.params.Id));
 // jei yra gaunami duomenys, juos reikia validuoti
 if(isNaN(+req.params.Id)){
     res.send("ID privalo buti skaicius");
@@ -140,6 +146,19 @@ if(isNaN(+req.params.Id)){
 // dazniausiai kuriama ant 3000 porto
 // listen priima du parametrus - porta ir callback funkcija(kas atsitiks kai pasileis serveris)
 server.post("/prisijungimas",(req,res)=>{
+    // su req issiusti atsakymo negalima
+    // postman.com patikrina endpointus
+const username = req.body.username;
+const password = req.body.password;
+if(!username) return res.status(400).json({message:"Prašau įvesti tinkamą vartotojo vardą"});
+if(!password) return res.status(400).json({message:"Prašau įvesti slaptažodį"});
+
+const selectedUser = users.find((user)=>user.username.toLowerCase()===username.toLowerCase());
+if(!selectedUser) return res.status(400).json({message:"Toks vartotojas neegzistuoja"});
+if(selectedUser.password===password) 
+    // res.send("Sėkmingai prisijungėte prie sistemos");
+res.redirect("http://127.0.0.1:5500/2024-01-10/Frontendas/todos.html");
+
 
 });
 server.listen(3000, ()=>{

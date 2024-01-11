@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+   <style>
+    
+    body{
+        background-color: rgb(28, 27, 27);
+        color: antiquewhite;
+    }
+    .todolist, .donelist{
+        width: 40%;
+        min-height: 60vh;
+        background-color: rgb(128, 128, 181);
+    }
+    .todo{
+        cursor:pointer;
+    }
+    .todo:hover{
+        background-color: rgb(71, 71, 154);
+    }
+    .dragover{
+        background-color: blueviolet;
+    }
+   </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TODOS</h1>
+        <hr>
+        <div class="tododonelist justify-content-between text-center">
+            <div class="todolist d-flex flex-column">
+                <div class="alltodos dropzone">
+                    <div class="todo justify-content-between draggable">
+                        <input type="checkbox" name="todo">
+                        <span>Go to work</span>
+                    </div>
+                    <div class="todo">
+                        <input type="checkbox" name="todo">
+                        <span>Go to work</span>
+                    </div>
+                    <!-- dropdownas turi buti -->
+                    <div class="todo">
+                        <input type="checkbox" name="todo">
+                        <span>Go to work</span>
+                    </div>
+                    <div class="todo">
+                        <input type="checkbox" name="todo">
+                        <span>Go to work</span>
+                    </div>
+                    <div class="todo">
+                        <input type="checkbox" name="todo">
+                        <span>Go to work</span>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex">
+                <input type="text"/>
+                <div class="btn btn-secondary">ADD</div>
+            </div>
+            <div class="actions d-flex flex-column justify-content-center">
+            </div>
+                <div class="donelist dropzone">
+                    <div class="todo justify-content-between">
+                        <input type="checkbox" name="todo">
+                        <span>Go to work</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="drag.js"></script>
+</body>
+</html>

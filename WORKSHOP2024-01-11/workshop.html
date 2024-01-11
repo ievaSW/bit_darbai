@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        section{
+            height:100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container{
+            background-color: rgb(168, 109, 224);
+            border-radius: 10px;
+            padding: 5rem;
+            width: 40rem;
+        }
+        h1{
+            text-align: center;
+            margin-bottom:20px;
+
+        }
+        .password-header{
+            position: relative;
+
+        }
+        .passowrd input{
+            width:100%;
+            height: 2rem;
+            background-color: rgb(88, 15, 156);
+            outline: none;
+            border: none;
+            border-radius: 15px;
+        }
+
+        .copyButton{
+                padding: 10px;
+                outline: none;
+                border:none;
+                border-radius: 15px;
+                position: absolute;
+                
+        }
+
+        .form-field{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid grey;
+            font-size: 1.3rem;
+        }
+        #submit{
+            width: 100%;
+            padding:1rem;
+            margin-top: 10px;
+            font-size: 15px;
+            border-radius: 15px;
+            border: none;
+            cursor: pointer;
+            background-color: rgb(156, 30, 210);
+            transition: all 0.3s;
+        }
+        #submit:hover{
+            background-color: chocolate;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="container">
+            <h1>Password generator</h1>
+
+            <div class="password-header">
+                <input type="text" id="passowrd" class="passowrd" value="Password">
+                <button class="copyButton" id="copyButton">COPY</button>
+            </div>
+
+            <div class="password-body">
+                <div class="form-field">
+                    <label class="passwordlength" for="">Password Length</label>
+                    <input type="number" id="passwordlength" value="12" min="6" max="30">
+                </div>
+                <div class="form-field">
+                    <label class="IncludeUppercase" for="">Include uppercase</label>
+                    <input type="checkbox" id="passworduppercase">
+                </div>
+                <div class="form-field">
+                    <label class="passwordLowerCase" for="">Include lowercase</label>
+                    <input type="checkbox" id="passwordLowerCase" >
+                </div>
+                <div class="form-field">
+                    <label class="passwordlength" for="">Include nmbers</label>
+                    <input type="checkbox" id="IncludeNmbers" value="12" min="6" max="30">
+                </div>
+                <div class="form-field">
+                    <label class="passwordlength" for="">Include symbols</label>
+                    <input type="checkbox" id="IncludeSymbols">
+                </div>
+                <div>
+                    <button id="submit">Generate password</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <script src="workshop.js"></script>
+</body>
+</html>
