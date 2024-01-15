@@ -62,9 +62,10 @@ async function register(){
    
 }
 
-RegisterButton.addEventListener("click", register);
+RegisterButton.onclick = register;
+
 // LOGINO APSIRASYMAS
-// // id="logUserName" type="text" class="form-control" placeholder="User Name">
+// id="logUserName" type="text" class="form-control" placeholder="User Name">
 // <input id="logPassword" type="text" class="form-control" placeholder="Password">
 // <div id="logButton" class="btn btn-warning">Login</div>
 
@@ -73,8 +74,8 @@ const LoginPasswordInput = document.getElementById("logPassword");
 const LoginButton = document.getElementById("logButton");
 
 async function login(){
-    try{
-        const promise = await fetch("http://localhost:3000/prisijungimas", {
+
+        fetch("http://localhost:3000/prisijungimas", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -84,13 +85,13 @@ async function login(){
             password: LoginPasswordInput.value,
         }),
 
-    });
-    const response = await promise.text();
-    console.log(response);
-     // jei nenudirectina i kita puslapi laikinas sprendimas, jis tikrai nerekomanduojamas
-     window.location.href = "http://127.0.0.1:5500/2024-01-10/Frontendas/todos.html";
-    }catch(error){
-console.log(error);
-    }
+    })
+    .then((response) => response.json())
+    .then((response) => (window.location.href = response.url))
+    .catch((error) => console.log(error));
+    
+    // jei nenudirectina i kita puslapi laikinas sprendimas, jis tikrai nerekomanduojamas
+    //  window.location.href = "http://127.0.0.1:5500/2024-01-10/Frontendas/todos.html";
+   
 }
-LoginButton.addEventListener("click", login);
+LoginButton.onclick = login;

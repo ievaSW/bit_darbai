@@ -90,7 +90,7 @@ server.use(cors());
 server.use(express.json());
 
 const users = [];
-
+const todos = [];
 
 
 server.get("/user/:Id", (req, res)=>{
@@ -154,13 +154,47 @@ if(!username) return res.status(400).json({message:"Prašau įvesti tinkamą var
 if(!password) return res.status(400).json({message:"Prašau įvesti slaptažodį"});
 
 const selectedUser = users.find((user)=>user.username.toLowerCase()===username.toLowerCase());
-if(!selectedUser) return res.status(400).json({message:"Toks vartotojas neegzistuoja"});
-if(selectedUser.password===password) 
+if(!selectedUser) return res.status(404).json({message:"Toks vartotojas neegzistuoja"});
+if(selectedUser.password===password);
     // res.send("Sėkmingai prisijungėte prie sistemos");
-res.redirect("http://127.0.0.1:5500/2024-01-10/Frontendas/todos.html");
+res.status(200).json({ url: "http://127.0.0.1:5500/2024-01-10/Frontendas/todos.html"});
+});
 
+server.post("/todos", (req, res)=> {
+    const {username, todo} = req.body;
+    if(!username) return res.status(400).jason({message: "Blogai įvestas username"});
+    if(!todo) return res.status(400).json({message: "Blogai įvesta užduotis"});
+    const selectedUser = users.find((user) => user.username.toLowerCase() === username);
+    if(!selectedUser) return res.status(404).json({message: "Tokio vartotojo nėra"});
+    const newTodo = {id: todos.length + 1, username, todo};
+    todos.push(newTodo);
+    res.status(201).json({message:"Nauja užduotis buvo sėkmingai prdėta", newTodo});
 
 });
+
+server.get("/todos", (req, res)=>{
+    res.status(200).json(todos);
+});
+
+server.get("/todos/:id", (req, res)=>{
+   
+    
+});
+
+server.put("/todos/:id", (req, res)=>{
+   const id = +req.params.id;
+   if(isNaN(+id)) return res.status(400).json({message: "Įveskite tinkamą id"});
+
+   const{username, todo} = req.body;
+   const existingUser = username.find((user)=> user.username.toLowerCase()===username.toLowerCase());
+   if(!existingUser) return res.status(404).json({message: "Toks vartotojas neegzistuoja"});
+
+   const existingTodo = todos.findIndex((currentTodo)=>currentTodo.id===+id);
+    todos[existingTodo] = {...todos[existingTodo], todo, username};
+
+});
+
+
 server.listen(3000, ()=>{
     console.log("Aplikacija pasileido, jos adresas: http://localhost:3000/");
 });
