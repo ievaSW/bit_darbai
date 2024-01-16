@@ -38,17 +38,19 @@
 // register();
 
 // APSIRASOM NAUDOJAMUS LAUKELIUS PER ID
-const UserNameInput = document.querySelector("reg-UserName"),
-    EmailInput = document.querySelector("reg-Email"),
-    PasswordInput = document.querySelector("reg-Password"),
-    RegisterButton = document.querySelector("reg-Register");
+const UserNameInput = document.querySelector("#reg-UserName"),
+    EmailInput = document.querySelector("#reg-Email"),
+    PasswordInput = document.querySelector("#reg-Password"),
+    RegisterButton = document.querySelector("#reg-Register");
 
 // REGISTRACIJOS APSIRASYMAS
 async function register(){
     const promise = await fetch("http://localhost:3000/register", {
         method: "POST",
+        credentials: "include",
         headers: {
             "Content-Type": "application/json",
+
         },
         body: JSON.stringify({
             username: UserNameInput.value,
@@ -63,6 +65,7 @@ async function register(){
 }
 
 RegisterButton.onclick = register;
+// register();
 
 // LOGINO APSIRASYMAS
 // id="logUserName" type="text" class="form-control" placeholder="User Name">

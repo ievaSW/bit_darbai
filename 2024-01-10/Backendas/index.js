@@ -79,14 +79,29 @@
 // kreipimasisIserveri();
 
 const express = require("express");
+const sessions = require("express-session");
 const cors = require("cors");
 
 // sukuriamas serveris, tik dar nepaleidziamas ant porto
 // Pries pasileidziant serveri turime apsirasyti endpointus
 // req ir res yra objektai
+
 const server = express();
 // nustatymai kiekvienam req
-server.use(cors());
+
+server.use(sessions({
+    secret:"Banana bike",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        secure: false
+    },
+}));
+
+server.use(cors({
+    origin: "http://127.0.0.1:5500",
+    credentials: true,
+}));
 server.use(express.json());
 
 const users = [];
@@ -100,7 +115,7 @@ server.get("/user/:Id", (req, res)=>{
     console.log("parameters: " + req.params.Id);
     console.log("Query: " + JSON.stringify(req.query));
     console.log("Buvo kreiptasi i serveri");
-    res.send("Labas pasauli");
+    // res.send("Labas pasauli");
 });
 
 server.post("/register", (req,res)=>{
@@ -117,7 +132,10 @@ server.post("/register", (req,res)=>{
         email: email,
         password: password,
     });
-    
+    // sesijos
+    req.session.username = username;
+    req.session.userId = users[users.length - 1].Id;
+
     res.send("Atsakymas is serverio");
 } catch(err){
     res.send("Netinkami duomenys");
@@ -152,7 +170,6 @@ const username = req.body.username;
 const password = req.body.password;
 if(!username) return res.status(400).json({message:"Prašau įvesti tinkamą vartotojo vardą"});
 if(!password) return res.status(400).json({message:"Prašau įvesti slaptažodį"});
-
 const selectedUser = users.find((user)=>user.username.toLowerCase()===username.toLowerCase());
 if(!selectedUser) return res.status(404).json({message:"Toks vartotojas neegzistuoja"});
 if(selectedUser.password===password);
@@ -161,8 +178,11 @@ res.status(200).json({ url: "http://127.0.0.1:5500/2024-01-10/Frontendas/todos.h
 });
 
 server.post("/todos", (req, res)=> {
-    const {username, todo} = req.body;
-    if(!username) return res.status(400).jason({message: "Blogai įvestas username"});
+    const {username, todo, todostate} = req.body;
+
+
+
+    if(!username) return res.status(400).json({message: "Blogai įvestas username"});
     if(!todo) return res.status(400).json({message: "Blogai įvesta užduotis"});
     const selectedUser = users.find((user) => user.username.toLowerCase() === username);
     if(!selectedUser) return res.status(404).json({message: "Tokio vartotojo nėra"});
@@ -171,7 +191,7 @@ server.post("/todos", (req, res)=> {
     res.status(201).json({message:"Nauja užduotis buvo sėkmingai prdėta", newTodo});
 
 });
-
+// visų uzduociu gavimas (todos sukurtas masyvas failo virsuje)
 server.get("/todos", (req, res)=>{
     res.status(200).json(todos);
 });
@@ -183,13 +203,13 @@ server.get("/todos/:id", (req, res)=>{
 
 server.put("/todos/:id", (req, res)=>{
    const id = +req.params.id;
-   if(isNaN(+id)) return res.status(400).json({message: "Įveskite tinkamą id"});
+   if(isNaN(id)) return res.status(400).json({message: "Įveskite tinkamą id"});
 
    const{username, todo} = req.body;
    const existingUser = username.find((user)=> user.username.toLowerCase()===username.toLowerCase());
    if(!existingUser) return res.status(404).json({message: "Toks vartotojas neegzistuoja"});
 
-   const existingTodo = todos.findIndex((currentTodo)=>currentTodo.id===+id);
+   const existingTodo = todos.findIndex((currentTodo)=>currentTodo.id===id);
     todos[existingTodo] = {...todos[existingTodo], todo, username};
 
 });
