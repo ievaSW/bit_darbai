@@ -38,14 +38,17 @@ app.get('/reverse-string/:text', (req, res) => {
 // Task: Implement an API that checks if a user with a given ID exists in an array. Respond with 200: true if the user exists, or 404: false if not.
 // Example: /check-if-user-exists/2 should check if a user with ID 2 exists.
 const users = [];
+users.push({id: 1, name: 'First'}, {id: 2, name: 'Second'}, {id: 3, name: 'Third'});
+
 
 app.get('/check-if-user-exists/:userID', (req, res) => {
-    const userID = req.params.userID;
+    const userID = parseInt(req.params.userID);
+    // console.log(userID);
     const userExists = users.find((user) => user.id === userID);
     if (userExists) {
-        res.status(200).json({"User exists": true});
+        res.status(200).sendFile(__dirname + '/pictures/tick.png');
     } else {
-        res.status(404).json({"User doesn't exist": false});
+        res.status(404).sendFile(__dirname + '/pictures/404.png');
     }
 });
 
