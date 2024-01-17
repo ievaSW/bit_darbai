@@ -118,7 +118,7 @@ server.get("/user/:Id", (req, res)=>{
     // res.send("Labas pasauli");
 });
 
-server.post("/register", (req,res)=>{
+server.post("/user/register", (req,res)=>{
     // su try catch butinas validuojant vartotojo duomenis
     try{
     console.log(req.body);
@@ -163,7 +163,7 @@ if(isNaN(+req.params.Id)){
 });
 // dazniausiai kuriama ant 3000 porto
 // listen priima du parametrus - porta ir callback funkcija(kas atsitiks kai pasileis serveris)
-server.post("/prisijungimas",(req,res)=>{
+server.post("/user/login",(req,res)=>{
     // su req issiusti atsakymo negalima
     // postman.com patikrina endpointus
 const username = req.body.username;
@@ -197,7 +197,14 @@ server.get("/todos", (req, res)=>{
 });
 
 server.get("/todos/:id", (req, res)=>{
-   
+    const id = +req.params.id;
+	if (isNaN(id))
+		return res.status(400).json({ message: "Įveskite tinkamą id" });
+	const existingTodo = todos.find((todo) => todo.id === id);
+	if (!existingTodo) res.status(404).json({ message: "Įrašas buvo nerastas" });
+	//404 - irasas nerastas
+	else res.status(200).json(existingTodo); 
+    //200 - sėkmingas atsakymas
     
 });
 
@@ -211,12 +218,28 @@ server.put("/todos/:id", (req, res)=>{
 
    const existingTodo = todos.findIndex((currentTodo)=>currentTodo.id===id);
     todos[existingTodo] = {...todos[existingTodo], todo, username};
+    if(!existingTodo) return res.status(404).json({message: "Užduoties įrašas nebuvo rastas"});
+    else res.status(201).json(todos[existingTodo]);
 
 });
 
+server.delete("/todos/:id", (req, res) => {
+	const id = +req.params.id;
+	if (isNaN(id))
+		return res.status(400).json({ message: "Įveskite tinkamą id" });
+	const existingTodoIndex = todos.findIndex(
+		(currentTodo) => currentTodo.id === id
+	);
+	if (existingTodoIndex === -1) {
+		return res.status(404).json({ message: "Šalinamas įrašas nerastas" });
+	} else {
+		todos.splice(existingTodoIndex, 1);
+		return res.status(204).json({ message: "Įrašas sėkmingai ištrintas" });
+	}
+});
 
 server.listen(3000, ()=>{
     console.log("Aplikacija pasileido, jos adresas: http://localhost:3000/");
 });
 
-
+// 2:06:10 apie Postmana, rautu tikrinimas

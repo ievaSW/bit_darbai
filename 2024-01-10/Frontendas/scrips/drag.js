@@ -2,15 +2,19 @@ console.log("veikiu");
 
 let dragElement;
 
-const allDraggableElements = document.querySelectorAll(".draggable");
+
 const dropZones = document.querySelectorAll(".dropzone");
 
+function AddDragToAllTodos(){
+    const allDraggableElements = document.querySelectorAll(".draggable");
 for(const dragableElement of allDraggableElements )
 {
     dragableElement.addEventListener("dragstart", (event)=>{
         dragElement = event.target;
     });
+};
 }
+AddDragToAllTodos();
 
 for(const dropzone of dropZones){
     dropzone.addEventListener("dragover", (event)=>{

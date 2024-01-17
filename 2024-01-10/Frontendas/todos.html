@@ -52,6 +52,7 @@ input[type="checkbox"]{
     padding: 0.5rem;
     border-radius: 10px;
     height: 100%;
+    overflow-y: scroll;
 }
 
 .actions div{
@@ -63,6 +64,9 @@ input[type="checkbox"]{
     /* scale: 1.05; padidina buttonus */
     transition:all;
     transition-duration:0.5s ;
+}
+.lists{
+    max-height: 80vh;
 }
 
    </style>
@@ -106,13 +110,13 @@ input[type="checkbox"]{
                     </div> -->
                 </div>
                 <div class="d-flex input-group mt-5">
-                    <input style="width: 70%" class="form-control" type="text" style="width: 80%;"/>
-                    <div style="width: 30%" class="btn btn-secondary">ADD</div>
+                    <input id="todoinput" style="width: 70%" class="form-control" type="text" style="width: 80%;"/>
+                    <div id="todosubmit" style="width: 30%" class="btn btn-secondary">ADD</div>
                 </div>
             </div>
            
 <!-- Mygtuku divas -->
-            <div class="actions d-flex flex-column justify-content-center bg-warning">
+            <div class="actions d-flex flex-column justify-content-center bg-secondary">
                 <div id="moveToDone" class="moveToDone btn btn-secondary">To Done</div>
                 <div id="moveToDo" class="moveToTodo btn btn-secondary">To Do</div>
                 <div id="DeleteToDo" class="delete btn btn-secondary">Delete</div>

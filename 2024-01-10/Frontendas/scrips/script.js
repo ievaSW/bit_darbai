@@ -45,7 +45,7 @@ const UserNameInput = document.querySelector("#reg-UserName"),
 
 // REGISTRACIJOS APSIRASYMAS
 async function register(){
-    const promise = await fetch("http://localhost:3000/register", {
+    const promise = await fetch("http://localhost:3000/user/register", {
         method: "POST",
         credentials: "include",
         headers: {
@@ -78,7 +78,7 @@ const LoginButton = document.getElementById("logButton");
 
 async function login(){
 
-        fetch("http://localhost:3000/prisijungimas", {
+        fetch("http://localhost:3000/user/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
