@@ -10,6 +10,9 @@ const movetodotodone = ()=>{
     const allTodosCheckedInputs = document.querySelectorAll('.all-todos .todo input:checked');
     console.log(allTodosCheckedInputs);
 for(const inputElement of allTodosCheckedInputs){
+    const parent = inputElement.parentElement;
+        const parentId = parent.attributes["todo-id"].value
+        document.querySelector(`[todomove="${parentId}"]`).innerText = "Moved back";
     inputElement.checked = false;
     donelistElement.append(inputElement.parentElement);
 }
@@ -18,8 +21,11 @@ for(const inputElement of allTodosCheckedInputs){
 const moveTodoToTodoList = ()=>{
     const allTodosCheckedInputs = document.querySelectorAll('.done-list .todo input:checked');
     for(const inputElement of allTodosCheckedInputs){
+        const parent = inputElement.parentElement;
+        const parentId = parent.attributes["todo-id"].value
+        document.querySelector(`[todomove="${parentId}"]`).innerText = "Done";
         inputElement.checked = false;
-        todolistElement.append(inputElement.parentElement);
+        todolistElement.append(parent);
     }
 }
 

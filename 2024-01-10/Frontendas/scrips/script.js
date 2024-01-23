@@ -1,41 +1,15 @@
-// fetchas
 
-// async function callServer(){
-// try{
-// const promise = await fetch("http://localhost:3000/");
-// const response = await promise.text();
-// console.log(response);
-// } catch(err) {
-// console.log(err);
-// }
-// }
+async function checkSession(){
+    const promise = await fetch("http://localhost/server/user/session-check", {
+        credentials: "include",
+    });
+    const answer = await promise.json();
+    if (answer.sessionValid) {
+        window.location.href = "http://localhost/2024-01-10/Frontendas/todos.html";
+    }
 
-// callServer();
-
-
-
-
-
-
-// const apsirasom inputu laukelius
-
-// async function register(){
-//     const promise = fecth("nurodom serverio adresas",{
-//         method: "POST",
-//         headers: {
-//             "content-Type": "application/json"
-//         },
-//         // galim paduoti tik string tipo duomenis
-//         body: JSON.stringify({
-//             username: "Uoga",
-//             email:"siofunr@gmail.com",
-//             password: "1234168",
-//         }),
-
-//     });
-// }
-
-// register();
+}
+checkSession();
 
 // APSIRASOM NAUDOJAMUS LAUKELIUS PER ID
 const UserNameInput = document.querySelector("#reg-UserName"),
@@ -45,7 +19,7 @@ const UserNameInput = document.querySelector("#reg-UserName"),
 
 // REGISTRACIJOS APSIRASYMAS
 async function register(){
-    const promise = await fetch("http://localhost:3000/user/register", {
+    const promise = await fetch("http://localhost/server/users/register", {
         method: "POST",
         credentials: "include",
         headers: {
@@ -63,9 +37,8 @@ async function register(){
     console.log(response);
    
 }
-
 RegisterButton.onclick = register;
-// register();
+
 
 // LOGINO APSIRASYMAS
 // id="logUserName" type="text" class="form-control" placeholder="User Name">
@@ -78,7 +51,7 @@ const LoginButton = document.getElementById("logButton");
 
 async function login(){
 
-        fetch("http://localhost:3000/user/login", {
+        fetch("http://localhost/server/user/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
