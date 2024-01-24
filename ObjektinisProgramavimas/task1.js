@@ -25,7 +25,7 @@ console.log(rectangle1)
 
 class Circle{
     constructor(radius){
-        this.radius = radius;
+        this.radius = radius
     }
     get area(){
         return Math.PI * this.radius**

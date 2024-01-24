@@ -3,7 +3,7 @@ class Vehicle{
    constructor(speed,marker){
     this.speed  = speed;
     this.marker = marker;
-    this.color = "red;"
+    this.color = "Red"
    }
 horn(){
     console.log("Makes a sound...");
@@ -24,5 +24,5 @@ constructor(speed, marker){
 
 const Toyota = new Car(190, "Toyota Auris",4);
 const Bmx = new Bike(12, "BMX Turbo");
-console.log(Toyota)
-console.log(Bmx)
+console.log(Toyota.color)
+console.log(Bmx.color);
