@@ -1,19 +1,32 @@
 const express = require('express')
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 const app = express();
 
-//Prisijungimas prie duomenų bazės pasinaudojant URL
-mongoose.connect(`mongodb+srv://ievasw000:lrRRJCI5v3fjkX44@forum.16zcfhe.mongodb.net/forumhub`);
-const db = mongoose.connection;
+// DB konfiguracija
+require("./config/DBconnect.js").config();
+
+// // Laikinai sukonfiguruoja, .env kintamuosius, kad jie butu musu matomi musu kurimo aplinkose
+// require("dotenv").config();
+
+// // process.env
+// mongoose.connect(
+//     process.env.MONGO_CONNECTION
+//     .replace("__DB_USER", process.env.DB_USER)
+//     .replace("__DB_USER_PASSWORD", process.env.DB_USER_PASSWORD)
+//     .replace("__DB_HOST", process.env.DB_HOST)
+//     .replace("__DB_NAME", process.env.DB_NAME));
+// //Prisijungimas prie duomenų bazės pasinaudojant URL
+
+// const db = mongoose.connection;
 
 
-//DB listeneriai, kurie nusako ar prie DB  buvo prisijungta sėkmingai ar ne
-db.on('error', (error)=>{//ERROR listeneris
-	console.error('erroras: ' + error);
-})
-db.once('open', ()=>{//PRISIJUNGIMO listeneris
-	console.info('Prie duomenų bazės buvo sėkmingai prisijungta')
-})
+// //DB listeneriai, kurie nusako ar prie DB  buvo prisijungta sėkmingai ar ne
+// db.on('error', (error)=>{//ERROR listeneris
+// 	console.error('erroras: ' + error);
+// })
+// db.once('open', ()=>{//PRISIJUNGIMO listeneris
+// 	console.info('Prie duomenų bazės buvo sėkmingai prisijungta')
+// })
 
 
 // Nustatymas EJS aktyvavimui
