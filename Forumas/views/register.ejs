@@ -5,19 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registracija</title>
 
-    <link rel="stylesheet" href="public/main.css">
+		<link rel="stylesheet" href="../public/registration.css">
 </head>
 <body>
     <%- include('./components/nav-bar') %>
     <div class="container"><h3>Sveiki atvykę į registraciją</h3></div>
 
     <div class="container1">
-        <form action="/register" method="post">
-            <label for="username">Vartotojo vardas:</label>
+        <div class="form">
+            <label for="username">User Name:</label>
             <input type="text" name="username" id="username">
+
             <label for="password">Slaptažodis:</label>
             <input type="password" name="password" id="password">
-            <input type="submit" value="Registruoti">
-    
+
+            <label for="password">Gimimo data:</label>
+            <input type="Date" name="birthDate" id="birthDate">
+
+            <label for="password">Elektroninis paštas:</label>
+            <input type="email" name="email" id="email">
+
+            <label for="password">Poifilio nuotrauka:</label>
+            <input type="file" name="email" id="profilephoto" accept=".jpg, .png, .gif, .bmp">
+
+            <button id="registerButton">Register</button>
+        </div>
+    </div>
+    <script src="/public/registration.js"></script>
+            
 </body>
 </html>

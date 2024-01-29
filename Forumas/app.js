@@ -1,9 +1,3 @@
-const express = require('express')
-// const mongoose = require('mongoose');
-const app = express();
-
-// DB konfiguracija
-require("./config/DBconnect.js").config();
 
 // // Laikinai sukonfiguruoja, .env kintamuosius, kad jie butu musu matomi musu kurimo aplinkose
 // require("dotenv").config();
@@ -29,37 +23,25 @@ require("./config/DBconnect.js").config();
 // })
 
 
-// Nustatymas EJS aktyvavimui
-app.set("view engine", "ejs");
+// Pats express yra objektas, kuris turi defaultinę funkcija.
+const express = require('express')
+const app = express();
 
-// Tarpinio routo sukūrimas
-const publicRouter = express.Router();
+// DB konfiguracija
+require("./config/DBconnect.js").config();
+// Express middleware konfiguracija
+require("./config/expressMiddleWares.js").config(app);
 
-//Statinių failų atvaizdavimas per /public aplanką
-publicRouter.use(express.static("public"));
+// // Failu ivesties konfiguracija
+// const storage = multer.diskStorage({
 
-//Tarpinio routo panaudojimas, pasiekiamas per http://localhost/public endpoint'ą
-app.use("/public", publicRouter); 
-
-
-app.get('/', (req, res) => {
-    res.render('index', {
-        // siuos kintamuosius galima naudoti index.ejs faile
-        title: "Forumo aplikacija",
-        username: "ievaSW",
-        list: ['Product1', 'Product2', 'Milk', 'Choclate']
-    });
-    //Kartu paduodami ir parametrai EJS failui
-});
-
-
-app.get('/register', (req,res)=>{
-	res.render('register');
-	//Register rout'as skirtas registracijai
-})
-
-
+// })
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000,  http://localhost:3000');
 })
+
+// Folderių pavadinimai (MVC)
+// M - modules
+// V - views
+// C - controllers

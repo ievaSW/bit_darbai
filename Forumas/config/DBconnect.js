@@ -1,10 +1,8 @@
-
-require("dotenv").config();
-
 const express = require('express')
 const mongoose = require('mongoose');
 const app = express();
 
+require("dotenv").config();
 
 function config(){
 // Laikinai sukonfiguruoja, .env kintamuosius, kad jie butu musu matomi musu kurimo aplinkose
