@@ -1,8 +1,16 @@
 const express = require('express')
 const mongoose = require('mongoose');
+require("dotenv").config();
+const mongoUrl = process.env.MONGO_CONNECTION
+    .replace("__DB_USER", process.env.DB_USER)
+    .replace("__DB_USER_PASSWORD", process.env.DB_USER_PASSWORD)
+    .replace("__DB_HOST", process.env.DB_HOST)
+    .replace("__DB_NAME", process.env.DB_NAME)
+
+
 const app = express();
 
-require("dotenv").config();
+
 
 function config(){
 // Laikinai sukonfiguruoja, .env kintamuosius, kad jie butu musu matomi musu kurimo aplinkose
@@ -29,4 +37,4 @@ db.once('open', ()=>{//PRISIJUNGIMO listeneris
 })
 }
 
-module.exports = {config};
+module.exports = {config, mongoUrl};

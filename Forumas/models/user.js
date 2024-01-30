@@ -6,6 +6,11 @@ const mongoose = require("mongoose");
 
 // Apsirašome vartotojo schemą
 const schema = new mongoose.Schema({
+	admin:{
+		type: Boolean,
+        default: false,
+		required: true
+	},
     username: {
         // inputo duomenu tipas
         type: String,
@@ -16,7 +21,7 @@ const schema = new mongoose.Schema({
         minLength: 6,
         // Maksimalus vartotojo vardo ilgis
         maxLength: 30},
-
+		
     email: {
         type: String,
         required: true,
