@@ -5,14 +5,15 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		
 		<!-- CSS ir JS įtraukimas iš /public aplanko naudojantis serverio endpoint'u -->
-		<link rel="stylesheet" href="public/main.css"/>
+		<link rel="stylesheet" href="../public/main.css"/>
+		<link rel="stylesheet" href="../public/registration.css">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 		<title><%= title %></title>
 	</head>
 	<body>
 		<!-- EJS komponentu itraukimas i html struktūrą -->
 		<%- include('./components/nav-bar.ejs') %>
-		<%- include('./components/mainpage.ejs') %>
+		<%- include('./components/homePage.ejs') %>
 		
 		<!-- <div class="container">
 			IF/ELSE statement'as su EJS sintakse
