@@ -1,0 +1,138 @@
+body{
+    margin:0;
+    background-color: rgb(1, 1, 1);
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px;
+
+}
+
+.languageSelector{
+width:120px;
+height: 25px;
+border-radius: 3px;
+}
+
+h1, h2, h3, form{
+    color: white;
+    text-align: center;
+}
+
+h1{
+    font-size: 50px;
+}
+
+.submit{
+    width: 200px;
+    height:54px;
+    border-radius: 3px;
+    background-color:red;;
+    color: white;
+    border: none;
+    font-size: 20px;
+    cursor:pointer;
+}
+
+.submit:hover{
+    background-color: rgb(225, 47, 47);
+}
+
+input[type="email"]{
+    width: 200px;
+    height: 51px;
+    border-radius: 3px;
+    border: none;
+    font-size: 15px;
+}
+p, span{
+    color:white
+}
+
+.Signin{
+    width: 100px;
+    height: 25px;
+    border-radius: 3px;
+    background-color:red;;
+    color: white;
+    border: none;
+    font-size: 15px;
+    cursor:pointer;
+}
+
+.Signin:hover{
+    background-color: rgb(225, 47, 47);
+}
+
+.Entertainment{
+    margin-top: 100px;
+    border-bottom:grey solid 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+
+}
+
+span{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+h5{
+    color: white;
+    font-size: 24px;
+    width: 60%;
+}
+
+/* FAQ stilius */
+/* h1{
+    text-align: center;
+    font-size: 30px;
+    color: darkblue;
+    padding: 1rem;
+
+    }
+    .accordion{
+       background-color: rgb(171, 112, 91);
+       cursor:pointer;
+       padding: 1rem;
+       width:100%;
+       border-bottom: solid 1px coral;
+        transition:all 0.4s;
+        display:flex;
+        justify-content:space-between;
+        align-items: center;
+        font-size: 20px;
+    }
+
+    .active, .accordion:hover{
+        background-color: rgb(27, 129, 95);
+    }
+
+    .accordion::after{
+        content: "\f067";
+        font-family: FontAwesome;
+        float: right;
+        margin-left: 10px;
+        font-weight: 900;
+
+    }
+    .active::after {
+        content: "\f068";
+        font-family: FontAwesome;
+        float: right;
+        margin-left: 10px;
+        font-weight: 900;
+
+    }
+    .desk{
+        max-height:0;
+        overflow:hidden;
+        padding:.1rem;
+        transition:max height 0.4s ease;
+
+    } */
