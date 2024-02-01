@@ -11,8 +11,8 @@
 <body>
     <%- include('./components/nav-bar') %>
     <div class="container"><h3>Fill the registration form, please</h3></div>
-
-    <form>
+<!-- pasitaisyti pasveikinimą -->
+    <form action="/api/user/register" method="post" >
         <div class="container1">
             <div class="form">
                 <label for="username">User Name</label>
@@ -28,7 +28,7 @@
                     <input type="email" name="email" id="email">
 
                     <label for="password">Profile Picture</label>
-                    <input type="file" name="email" id="profilephoto" accept=".jpg, .png, .gif, .bmp">
+                    <input type="file" name="img" id="profilephoto" accept=".jpg, .png, .gif, .bmp">
 
                     <button id="registerButton">Sign in</button>
             </div>

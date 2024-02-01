@@ -26,6 +26,17 @@ const usernameInput = document.getElementById("username"),
 	profilePhoto = document.getElementById("profilephoto"),
 	registerButton = document.getElementById("registerButton");
 
+// profilePhoto.addEventListener("change", function (event) {
+// 		var file = event.target.files[0];
+// 		var fileType = file.type;
+// 		var validImageTypes = ["image/jpeg", "image/png", "image/gif", "image/bmp"];
+	
+// 		if (!validImageTypes.includes(fileType)) {
+// 			alert("Invalid file type. Please select an image file.");
+// 			event.target.value = ""; // Reset the input
+// 		}
+// 	});
+
 registerButton.onclick = async () => {
 	console.log("veikiu!");
 	const data = new FormData();

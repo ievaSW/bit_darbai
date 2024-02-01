@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- isimesti tailwind css -->
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="">
+        <section>
+            <form action="/api/post">
+                <!-- tailwind klases -->
+
+                <input type="text" name="title" placeholder="Post title"
+                class="inline-block my-4 outline-none w-full rounded py-2 px-4"/>
+                <textarea id="texteditor" name="content"></textarea>
+                <button>Submit</button>
+            </form>
+        </section>
+        <fieldset class="border-gray-400 rounded p-4 bg-white">
+            <legend>formos rezultatas</legend>
+            <div class="flex flex-wrap"></div>
+        </fieldset>
+    </div>
+    <script src="/tinymce/tinymce.min.js"></script>
+</body>
+</html>

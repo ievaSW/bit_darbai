@@ -1,6 +1,8 @@
 const express = require('express')
 const mongoose = require('mongoose');
+
 require("dotenv").config();
+
 const mongoUrl = process.env.MONGO_CONNECTION
     .replace("__DB_USER", process.env.DB_USER)
     .replace("__DB_USER_PASSWORD", process.env.DB_USER_PASSWORD)
