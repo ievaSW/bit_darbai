@@ -20,10 +20,10 @@ router.post("/register", upload.single("img"), async (req,res) => {
         return res.status(400).json({message:"Nebuvo pateikti visi duomenys!"})
     }
 
-     const validationResult = validate(req.body);
-    if (validationResult !== "success") {
-        return res.redirect("/register?error=" + validationResult);
-    }
+    //  const validationResult = validate(req.body);
+    // if (validationResult !== "success") {
+    //     return res.redirect("/register?error=" + validationResult);
+    // }
 
     // vartotojo paieska pagal elektronini pasta arba varda
     // 1. budas

@@ -1,14 +1,12 @@
 tinymce.init({
-    selector: "textares#text-editor",
-    pluggins: "lists link image table code help wordcount",
-    setup:
-    function(editor){
-        editor.on('click', function() {
-            document.getElementById("preview").innerHTML = edit.getContent();
-        });
-        editor.on('keyup', function() {
-            document.getElementById("preview").innerHTML = edit.getContent();
-        });
-    }
-    // editoriaus konfiguraccija
-})
+	selector: "textarea#text-editor",
+	plugins: "lists link image table code help wordcount",
+	setup: (editor) => {
+		editor.on("keyup", () => {
+			document.querySelector("#preview").innerHTML = editor.getContent();
+		});
+		editor.on("change", () => {
+			document.querySelector("#preview").innerHTML = editor.getContent();
+		});
+	},
+});
